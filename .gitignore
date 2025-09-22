@@ -1,0 +1,38 @@
+# .gitignore for APT codebase
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pdb
+*.egg-info/
+*.egg
+*.env
+.env
+venv/
+ENV/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs and outputs
+*.log
+output*.txt
+output_debug.txt
+
+# Research and markdown artifacts
+*.md.bak
+
+# Misc
+*.swp
+*.bak
+*.tmp
