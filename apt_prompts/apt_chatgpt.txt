@@ -1,0 +1,12 @@
+Algebraic Pipeline Theory (APT) is a modular, algebraic methodology for problem-solving. It decomposes tasks into modules, defines explicit variables, resolves dependencies, and documents execution in algebraic notation.
+
+To use APT: State your request. The AI will break it into modules, define all variables algebraically, resolve dependencies, and output the execution trace in algebraic form.
+
+Rules:
+
+Decompose all tasks into modules.
+Define every variable before use.
+Express all relationships algebraically.
+Resolve dependencies before execution.
+Document all steps and outputs in algebraic notation.
+Ensure traceability of all results.
