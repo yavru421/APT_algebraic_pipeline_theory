@@ -1,20 +1,21 @@
 import requests
 import os
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 # Explicit variable definitions (APT style)
-x_1 = os.getenv("LLAMA_API_KEY")  # API key
-x_2 = "https://api.llama.com/v1/chat/completions"  # Endpoint
-x_3 = {
+# Note: runtime values (like API key) are loaded inside main(), not at import time
+DEFAULT_ENDPOINT = "https://api.llama.com/v1/chat/completions"
+DEFAULT_HEADERS_TEMPLATE = {
     "Accept": "text/event-stream",
     "Content-Type": "application/json",
-    "Authorization": f"Bearer {x_1}"
-}  # Headers
-x_4 = (
+}
+DEFAULT_SYSTEM_INSTRUCTIONS = (
     "You are an algebraic pipeline executor. "
     "Interpret all tasks as modular pipeline steps, with explicit variable definitions, "
     "dependency resolution, and algebraic notation. "
     "Structure responses as algebraic pipeline definitions and execution logs."
-)  # System instructions
+)
 
 # Modular pipeline step: build payload
 def m_1_build_payload(system_instructions, user_message):
@@ -33,10 +34,13 @@ def m_1_build_payload(system_instructions, user_message):
     }
 
 # Modular pipeline step: call API
-def m_2_call_api(endpoint, headers, payload):
+def m_2_call_api(endpoint, headers, payload, timeout=30, max_retries=3):
     # y_2 = m_2(x_2, x_3, y_1)
+    session = requests.Session()
+    retries = Retry(total=max_retries, backoff_factor=0.5, status_forcelist=[500, 502, 503, 504])
+    session.mount("https://", HTTPAdapter(max_retries=retries))
     try:
-        response = requests.post(endpoint, headers=headers, json=payload, stream=True)
+        response = session.post(endpoint, headers=headers, json=payload, stream=True, timeout=timeout)
         response.raise_for_status()
         return response
     except Exception as e:
@@ -46,52 +50,71 @@ def m_2_call_api(endpoint, headers, payload):
 # Modular pipeline step: process stream
 import json
 
-def m_3_process_stream(response):
+def m_3_process_stream(response, out_path="output.txt", debug_path="output_debug.txt"):
     # y_3 = m_3(y_2)
-    x_7 = "output.txt"
-    x_8 = "output_debug.txt"
     if response is None:
         print("[ERROR] No response to process.")
         return
-    with open(x_7, "w", encoding="utf-8") as f, open(x_8, "w", encoding="utf-8") as debug_f:
+    with open(out_path, "w", encoding="utf-8") as f, open(debug_path, "w", encoding="utf-8") as debug_f:
         for line in response.iter_lines():
             if line:
-                decoded = line.decode("utf-8")
+                try:
+                    decoded = line.decode("utf-8")
+                except Exception:
+                    # skip binary/invalid lines
+                    continue
                 debug_f.write(decoded + "\n")
                 # Correct extraction for event stream format
                 try:
                     if decoded.startswith('data:'):
                         decoded = decoded[5:].strip()
+                    if not decoded:
+                        continue
                     obj = json.loads(decoded)
-                    if "event" in obj and obj["event"].get("event_type") == "progress":
-                        text = obj["event"]["delta"].get("text", "")
+                    ev = obj.get("event")
+                    if isinstance(ev, dict) and ev.get("event_type") == "progress":
+                        delta = ev.get("delta", {})
+                        text = delta.get("text", "")
                         if text:
                             f.write(text)
-                except Exception:
+                            f.flush()
+                except Exception as e:
+                    # Write parse errors to debug and continue
+                    debug_f.write(f"[PARSE_ERROR] {e}\n")
                     continue
 
 # Algebraic pipeline execution log
-print("[LOG] x_1 = API key loaded")
-print("[LOG] x_2 = Endpoint set")
-print("[LOG] x_3 = Headers composed")
-print("[LOG] x_4 = System instructions ready")
+def main():
+    api_key = os.getenv("LLAMA_API_KEY")
+    if not api_key:
+        print("[ERROR] LLAMA_API_KEY not set in environment")
+        return
+    endpoint = os.getenv("LLAMA_ENDPOINT", DEFAULT_ENDPOINT)
+    headers = dict(DEFAULT_HEADERS_TEMPLATE)
+    headers["Authorization"] = f"Bearer {api_key}"
 
-# Pipeline execution
+    print("[LOG] API key loaded")
+    print("[LOG] Endpoint set")
+    print("[LOG] Headers composed")
+
+    # Simple example run
+    instruction = os.getenv("APT_INSTRUCTION") or (
+        "Analyze the following paragraph for key arguments, map them to their supporting evidence, and create a concise summary suitable for a research briefing."
+    )
+    paragraph = os.getenv("APT_PARAGRAPH") or (
+        "Artificial intelligence is transforming multiple industries by automating routine tasks, "
+        "enabling new forms of human-computer collaboration, and providing unprecedented data insights. "
+        "However, ethical concerns about bias, privacy, and accountability are increasingly critical. "
+        "Researchers advocate for transparency in algorithms and careful monitoring of AI impacts."
+    )
+    user_content = f"{instruction}\nParagraph: {paragraph}"
+    payload = m_1_build_payload(DEFAULT_SYSTEM_INSTRUCTIONS, user_content)
+    print("[LOG] Payload built")
+    response = m_2_call_api(endpoint, headers, payload)
+    print("[LOG] API response received")
+    m_3_process_stream(response)
+    print("[LOG] Stream processed")
 
 
-
-# Automated APT system test: set instruction and paragraph directly
-instruction = "Analyze the following paragraph for key arguments, map them to their supporting evidence, and create a concise summary suitable for a research briefing."
-paragraph = (
-    "Artificial intelligence is transforming multiple industries by automating routine tasks, "
-    "enabling new forms of human-computer collaboration, and providing unprecedented data insights. "
-    "However, ethical concerns about bias, privacy, and accountability are increasingly critical. "
-    "Researchers advocate for transparency in algorithms and careful monitoring of AI impacts."
-)
-x_5 = f"{instruction}\nParagraph: {paragraph}"
-payload = m_1_build_payload(x_4, x_5)
-print("[LOG] y_1 = Payload built")
-response = m_2_call_api(x_2, x_3, payload)
-print("[LOG] y_2 = API response received")
-m_3_process_stream(response)
-print("[LOG] y_3 = Stream processed")
+if __name__ == "__main__":
+    main()

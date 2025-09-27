@@ -36,3 +36,13 @@ output_debug.txt
 *.swp
 *.bak
 *.tmp
+images/
+archive/
+results/
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.bmp
+*.tiff

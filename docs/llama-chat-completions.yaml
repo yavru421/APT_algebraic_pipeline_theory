@@ -1,0 +1,368 @@
+
+# Algebraic Pipeline Theory (APT) Methodology Applied
+# Step 1: Modular Pipeline Construction
+# Let x_1 = original OpenAPI spec
+# Let y_1 = {info, servers, tags, paths, components} = modular pipeline sections
+openapi: 3.0.0
+info: # y_1[0]
+  title: Llama Chat Completions API
+  version: 1.3.0
+  description: |
+    Clean spec: chat completion with tool calling, structured outputs, planning, final answer schemas, streaming & errors.
+servers: # y_1[1]
+  - url: https://api.llama.com/v1
+tags: # y_1[2]
+  - name: Chat
+
+# Step 2: Paths as Pipeline Modules
+paths: # y_1[3]
+  /chat/completions:
+    post:
+      # Step 2.1: Define variables for request/response
+      # Let p_1 = /chat/completions, r_1 = request, q_1 = response
+      tags: [Chat]
+      summary: Create a chat completion
+      operationId: createChatCompletion
+      description: Chat completion with optional tools, images, structured output, planning, and streaming.
+      requestBody: # r_1
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatCompletionRequest' # s_1
+      responses: # q_1
+        '200':
+          description: Success (non-stream). If stream=true, SSE is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatCompletionResponse' # s_2
+            text/event-stream:
+              schema:
+                type: string
+                description: "SSE stream of deltas ending with 'event: done'."
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse' # s_3
+        '429':
+          description: Rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse' # s_3
+        '500':
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse' # s_3
+      security:
+        - bearerAuth: []
+
+  /upload-image:
+    post:
+      # Step 2.2: Define variables for image upload
+      # Let p_2 = /upload-image, r_2 = request, q_2 = response
+      tags: [Chat]
+      summary: Upload an image file and question for model analysis
+      operationId: uploadImageAndAsk
+      description: |
+        Accepts an image file upload and a question. The server converts the image to base64 and forwards it to the model as a chat completion request.
+      requestBody: # r_2
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file, question, model]
+              properties:
+                file: # s_4
+                  type: string
+                  format: binary
+                  description: Image file to upload
+                question: # s_5
+                  type: string
+                  description: The user's question about the image
+                model: # s_6
+                  type: string
+                  enum:
+                    - Llama-4-Scout-17B-16E-Instruct-FP8
+                    - Llama-4-Maverick-17B-128E-Instruct-FP8
+      responses: # q_2
+        '200':
+          description: Success (model response)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatCompletionResponse' # s_2
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse' # s_3
+        '500':
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse' # s_3
+      security:
+        - bearerAuth: []
+
+# Step 3: Components as Pipeline Modules
+components: # y_1[4]
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    # Step 3.1: Explicit variable definitions for schemas
+    # Let s_i = schema property, e.g., s_1 = model, s_2 = messages
+    ChatCompletionRequest: # s_1
+      type: object
+      required: [model, messages]
+      properties:
+        model: # s_1.1
+          type: string
+          enum:
+            - Llama-4-Scout-17B-16E-Instruct-FP8
+            - Llama-4-Maverick-17B-128E-Instruct-FP8
+        messages: # s_1.2
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatMessage' # s_7
+        tools: # s_1.3
+          type: array
+          items:
+            $ref: '#/components/schemas/ToolDefinition' # s_8
+        tool_choice: # s_1.4
+          oneOf:
+            - type: string
+              enum: [none, auto, required]
+            - type: object
+              required: [type, function]
+              properties:
+                type:
+                  type: string
+                  enum: [function]
+                function:
+                  type: object
+                  required: [name]
+                  properties:
+                    name:
+                      type: string
+        response_format: # s_1.5
+          oneOf:
+            - type: object
+              required: [type]
+              properties:
+                type:
+                  type: string
+                  enum: [text]
+            - type: object
+              required: [type, json_schema]
+              properties:
+                type:
+                  type: string
+                  enum: [json_schema]
+                json_schema:
+                  type: object
+        repetition_penalty: # s_1.6
+          type: number
+          minimum: 1
+          maximum: 2
+          default: 1
+        temperature: # s_1.7
+          type: number
+          maximum: 1
+          default: 0.6
+        top_p: # s_1.8
+          type: number
+          maximum: 1
+          default: 0.9
+        top_k: # s_1.9
+          type: integer
+        max_completion_tokens: # s_1.10
+          type: integer
+          minimum: 1
+          default: 4096
+        stop: # s_1.11
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+        metadata: # s_1.12
+          type: object
+          additionalProperties: true
+        user: # s_1.13
+          type: string
+        stream: # s_1.14
+          type: boolean
+          default: false
+    ChatMessage: # s_7
+      type: object
+      required: [role, content]
+      properties:
+        role: # s_7.1
+          type: string
+          enum: [system, user, assistant, tool]
+        content: # s_7.2
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                oneOf:
+                  - $ref: '#/components/schemas/MessageContentPartText' # s_9
+                  - $ref: '#/components/schemas/MessageContentPartImage' # s_10
+        tool_name: # s_7.3
+          type: string
+          description: Present only for tool messages.
+        system_instructions: # s_7.4
+          type: string
+          description: "Instructions for the assistant to act as the user's twin: Respond as if you are the user—practical, self-taught, direct, and detail-oriented. The only difference is you (the assistant) went to MIT, UCLA, and BYU. Avoid jargon, keep explanations clear, and always focus on actionable steps. If you don't know something, say so plainly."
+    MessageContentPartText: # s_9
+      type: object
+      required: [type, text]
+      properties:
+        type: # s_9.1
+          type: string
+          enum: [text]
+        text: # s_9.2
+          type: string
+    MessageContentPartImage: # s_10
+      type: object
+      required: [type, image_url]
+      properties:
+        type: # s_10.1
+          type: string
+          enum: [image_url]
+        image_url: # s_10.2
+          type: object
+          required: [base64]
+          properties:
+            base64: # s_10.2.1
+              type: string
+    ToolDefinition: # s_8
+      type: object
+      required: [name, description, parameters]
+      properties:
+        name: # s_8.1
+          type: string
+        description: # s_8.2
+          type: string
+        parameters: # s_8.3
+          type: object
+    ToolCall:
+      type: object
+      properties:
+        name: # s_11.1
+          type: string
+        arguments: # s_11.2
+          type: object
+    CompletionMessage:
+      type: object
+      required: [role, content]
+      properties:
+        role: # s_12.1
+          type: string
+          enum: [assistant]
+        content: # s_12.2
+          $ref: "#/components/schemas/newschema1"
+        tool_calls: # s_12.3
+          type: array
+          items:
+            $ref: '#/components/schemas/ToolCall'
+        structured_output: # s_12.4
+          type: object
+    ChatCompletionResponse: # s_2
+      type: object
+      required: [id, model, completion_message]
+      properties:
+        id: # s_2.1
+          type: string
+        created: # s_2.2
+          type: integer
+          format: int64
+        model: # s_2.3
+          type: string
+        metrics: # s_2.4
+          type: array
+          items:
+            type: object
+        completion_message: # s_2.5
+          $ref: '#/components/schemas/CompletionMessage'
+        usage: # s_2.6
+          $ref: '#/components/schemas/Usage'
+    Usage:
+      type: object
+      properties:
+        prompt_tokens: # s_13.1
+          type: integer
+        completion_tokens: # s_13.2
+          type: integer
+        total_tokens: # s_13.3
+          type: integer
+    PlanSchema:
+      type: object
+      properties:
+        steps: # s_14.1
+          type: array
+          items:
+            type: object
+            required: [id, objective]
+            properties:
+              id: { type: string }
+              objective: { type: string }
+              proposed_tool: { type: string }
+              arguments: { type: object }
+              status: { type: string, enum: [pending, executing, done, skipped] }
+        next_step_id: # s_14.2
+          type: string
+        final_ready: # s_14.3
+          type: boolean
+      required: [steps]
+    FinalAnswerSchema:
+      type: object
+      required: [answer]
+      properties:
+        answer: # s_15.1
+          type: string
+        reasoning_summary: # s_15.2
+          type: string
+        sources: # s_15.3
+          type: array
+          items:
+            type: object
+            properties:
+              title: { type: string }
+              url: { type: string }
+        usage_notes: # s_15.4
+          type: string
+    ErrorResponse: # s_3
+      type: object
+      required: [error]
+      properties:
+        error: # s_3.1
+          type: object
+          required: [code, message]
+          properties:
+            code: # s_3.1.1
+              type: string
+            message: # s_3.1.2
+              type: string
+            retryable: # s_3.1.3
+              type: boolean
+            details: # s_3.1.4
+              type: object
+
+    newschema:
+      type: string
+
+    newschema1:
+      $ref: "#/components/schemas/newschema"
