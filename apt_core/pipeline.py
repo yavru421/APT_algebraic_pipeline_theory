@@ -1,14 +1,9 @@
 """
 APT Pipeline: Modular, algebraic pipeline for screenshot and image understanding using external AI APIs.
 """
-import os
-import json
-import glob
 import base64
-import requests
 from typing import Any
 
-# Small helper to build an algebraic expression describing a composed pipeline
 def build_pipeline_expression(steps: list[str]) -> str:
     """Return a human-readable algebraic expression for the pipeline.
 
@@ -39,17 +34,3 @@ def build_payload(image_b64: str, apt_prompt: str, model: str) -> dict[str, Any]
             }
         ]
     }
-
-def call_api(payload: dict[str, Any], api_url: str, bearer_token: str) -> requests.Response:
-    headers = {
-        'Authorization': f'Bearer {bearer_token}',
-        'Content-Type': 'application/json'
-    }
-    response = requests.post(api_url, json=payload, headers=headers)
-    return response
-
-def parse_response(response: requests.Response) -> dict[str, Any] | str:
-    try:
-        return response.json()
-    except Exception:
-        return response.text
