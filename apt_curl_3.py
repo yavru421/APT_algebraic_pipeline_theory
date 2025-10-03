@@ -1,7 +1,10 @@
 import requests
 import os
+import logging
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
+from apt_pipeline_pkg import pipeline
+from apt_pipeline_pkg.snapshot import snapshot, enabled as trace_enabled
 
 # Explicit variable definitions (APT style)
 # Note: runtime values (like API key) are loaded inside main(), not at import time
@@ -18,7 +21,7 @@ DEFAULT_SYSTEM_INSTRUCTIONS = (
 )
 
 # Modular pipeline step: build payload
-def m_1_build_payload(system_instructions, user_message):
+def m_1_build_payload(system_instructions: str, user_message: str) -> dict:
     # y_1 = m_1(x_4, x_5)
     return {
         "messages": [
@@ -32,9 +35,18 @@ def m_1_build_payload(system_instructions, user_message):
         "max_completion_tokens": 2048,
         "stream": True
     }
+    # snapshot payload (if enabled)
+    if trace_enabled():
+        try:
+            snapshot(1, "m_1_build_payload", "payload", {
+                "model": "Llama-4-Maverick-17B-128E-Instruct-FP8",
+                "system": system_instructions,
+            })
+        except Exception:
+            pass
 
 # Modular pipeline step: call API
-def m_2_call_api(endpoint, headers, payload, timeout=30, max_retries=3):
+def m_2_call_api(endpoint: str, headers: dict, payload: dict, timeout: int = 30, max_retries: int = 3):
     # y_2 = m_2(x_2, x_3, y_1)
     session = requests.Session()
     retries = Retry(total=max_retries, backoff_factor=0.5, status_forcelist=[500, 502, 503, 504])
@@ -42,6 +54,11 @@ def m_2_call_api(endpoint, headers, payload, timeout=30, max_retries=3):
     try:
         response = session.post(endpoint, headers=headers, json=payload, stream=True, timeout=timeout)
         response.raise_for_status()
+        if trace_enabled():
+            try:
+                snapshot(2, "m_2_call_api", "response_meta", {"status_code": response.status_code})
+            except Exception:
+                pass
         return response
     except Exception as e:
         print(f"[ERROR] API call failed: {e}")
@@ -50,7 +67,7 @@ def m_2_call_api(endpoint, headers, payload, timeout=30, max_retries=3):
 # Modular pipeline step: process stream
 import json
 
-def m_3_process_stream(response, out_path="output.txt", debug_path="output_debug.txt"):
+def m_3_process_stream(response, out_path: str = "output.txt", debug_path: str = "output_debug.txt") -> None:
     # y_3 = m_3(y_2)
     if response is None:
         print("[ERROR] No response to process.")
@@ -78,6 +95,11 @@ def m_3_process_stream(response, out_path="output.txt", debug_path="output_debug
                         if text:
                             f.write(text)
                             f.flush()
+                            if trace_enabled():
+                                try:
+                                    snapshot(3, "m_3_process_stream", "last_chunk", text)
+                                except Exception:
+                                    pass
                 except Exception as e:
                     # Write parse errors to debug and continue
                     debug_f.write(f"[PARSE_ERROR] {e}\n")
@@ -96,6 +118,14 @@ def main():
     print("[LOG] API key loaded")
     print("[LOG] Endpoint set")
     print("[LOG] Headers composed")
+
+    # If tracing enabled, write the algebraic expression of the pipeline
+    if trace_enabled():
+        try:
+            expr = pipeline.build_pipeline_expression(["m_1_build_payload", "m_2_call_api", "m_3_process_stream"])
+            snapshot(0, "pipeline_expression", "expr", expr)
+        except Exception:
+            pass
 
     # Simple example run
     instruction = os.getenv("APT_INSTRUCTION") or (
