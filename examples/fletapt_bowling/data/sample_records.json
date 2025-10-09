@@ -1,0 +1,23 @@
+{
+  "games": [
+    {
+      "filename": "sample_game_1.png",
+      "date": "2025-10-02",
+      "players": [
+        {"name": "Alex", "score": 188},
+        {"name": "Riley", "score": 172},
+        {"name": "Jordan", "score": 159}
+      ]
+    },
+    {
+      "filename": "sample_game_2.png",
+      "date": "2025-10-09",
+      "players": [
+        {"name": "Alex", "score": 201},
+        {"name": "Riley", "score": 165},
+        {"name": "Casey", "score": 144}
+      ]
+    }
+  ],
+  "metadata": {"version": "1.0", "total_games": 2}
+}
