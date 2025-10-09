@@ -46,6 +46,16 @@ A = f_5(Y_1, Y_2, Y_3, Y_4) \\
 S, D = f_6(X_1, X_2, X_3)
 $$
 
+## Examples
+- ▶️ FletAPT Bowling (Sanitized, Offline): [`examples/fletapt_bowling`](examples/fletapt_bowling)
+  - Quickstart:
+    ```bash
+    cd examples/fletapt_bowling
+    pip install -r requirements.txt
+    python -m src.main
+    ```
+- More: See [`EXAMPLES.md`](EXAMPLES.md)
+
 ## Actionable Recommendations
 - Maintain algebraic documentation for all future changes.
 - Use the current structure as a baseline for new APT experiments.
