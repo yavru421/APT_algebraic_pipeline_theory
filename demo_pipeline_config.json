@@ -1,0 +1,99 @@
+{
+    "pipelines": {
+        "data_ingestion": {
+            "inputs": {
+                "source_api": "https://api.example.com/data",
+                "batch_size": 1000,
+                "timeout_seconds": 300
+            },
+            "outputs": {
+                "raw_data_table": "raw_data",
+                "ingestion_metrics": "metrics.ingestion"
+            },
+            "depends_on": [],
+            "schedule": "0 */6 * * *",
+            "retry_policy": {
+                "max_retries": 3,
+                "backoff_multiplier": 2
+            }
+        },
+        "data_transformation": {
+            "inputs": {
+                "raw_data_table": "raw_data",
+                "transformation_rules": "config/transform_rules.yml"
+            },
+            "outputs": {
+                "cleaned_data_table": "cleaned_data",
+                "transformation_metrics": "metrics.transformation"
+            },
+            "depends_on": [
+                "data_ingestion"
+            ],
+            "schedule": "30 */6 * * *",
+            "retry_policy": {
+                "max_retries": 2,
+                "backoff_multiplier": 1.5
+            }
+        },
+        "data_quality_check": {
+            "inputs": {
+                "cleaned_data_table": "cleaned_data",
+                "quality_rules": "config/quality_rules.yml"
+            },
+            "outputs": {
+                "quality_report": "reports.quality",
+                "quality_score": "metrics.quality_score"
+            },
+            "depends_on": [
+                "data_transformation"
+            ],
+            "schedule": "45 */6 * * *",
+            "retry_policy": {
+                "max_retries": 1,
+                "backoff_multiplier": 1
+            }
+        },
+        "data_export": {
+            "inputs": {
+                "cleaned_data_table": "cleaned_data",
+                "export_config": "config/export.yml"
+            },
+            "outputs": {
+                "analytics_warehouse": "warehouse.analytics",
+                "export_metrics": "metrics.export"
+            },
+            "depends_on": [
+                "data_quality_check"
+            ],
+            "schedule": "0 */12 * * *",
+            "retry_policy": {
+                "max_retries": 3,
+                "backoff_multiplier": 2
+            }
+        }
+    },
+    "global_config": {
+        "monitoring": {
+            "alert_channels": [
+                "slack",
+                "email",
+                "pagerduty"
+            ],
+            "health_check_interval": 300,
+            "metric_retention_days": 30
+        },
+        "security": {
+            "encryption_enabled": true,
+            "audit_logging": true,
+            "access_control": "rbac"
+        },
+        "performance": {
+            "max_concurrent_pipelines": 5,
+            "resource_limits": {
+                "cpu_cores": 16,
+                "memory_gb": 64,
+                "storage_gb": 1000
+            }
+        }
+    }
+}
