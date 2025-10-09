@@ -22,3 +22,8 @@ jobs:
       - name: Run tests
         run: |
           pytest -q
+      - name: Run .RAPT smoke test
+        env:
+          APT_AUTO_INSTALL: "0"
+        run: |
+          python scripts/apt_runner.py RAPT_PIPELINE.RAPT

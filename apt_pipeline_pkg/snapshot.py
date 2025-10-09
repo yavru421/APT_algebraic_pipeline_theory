@@ -13,7 +13,8 @@ from pathlib import Path
 from typing import Any
 
 TRACE_ENV = "APT_TRACE"
-DEFAULT_OUT = Path("results") / "apt_trace.ndjson"
+DEFAULT_OUT_BASE = Path(os.getenv("APT_RUN_DIR", "APT_PIPELINE_RUNS"))
+DEFAULT_OUT = DEFAULT_OUT_BASE / "apt_trace.ndjson"
 MAX_VALUE_LEN = 1024
 
 

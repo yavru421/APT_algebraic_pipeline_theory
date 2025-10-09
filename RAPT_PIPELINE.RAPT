@@ -1,0 +1,7 @@
+# APT .RAPT DSL example
+# Define input bindings (optional)
+x1 = "netlify-llama-proxy-openapi.yaml"
+x2 = "demo_image.png"
+
+# Equation with per-call env annotations
+Y = m4(base_url=m0(openapi_file=x1) @ venvA, path="/chat/completions", payload=m2(image_b64=m1(image_path=x2) @ venvA, apt_prompt="Describe the image briefly.", model="demo-model") @ venvA, dry_run=true) @ venvA

@@ -1,0 +1,49 @@
+# APT Algebraic Pipeline Equation and Module Order
+# Define your pipeline as a sequence of modules with explicit variable bindings
+# Example:
+# pipeline:
+#   - name: m1
+#     fn: my_module
+#     inputs: { x1: input1 }
+#     output: y1
+#   - name: m2
+#     fn: another_module
+#     inputs: { y1: y1, x2: input2 }
+#     output: y2
+pipeline:
+  - name: m0
+    module: APT_MODULES.m0_openapi_resolve
+    fn: run
+    env: venvA
+    args:
+      openapi_file: netlify-llama-proxy-openapi.yaml
+      server_index: 0
+  - name: m1
+    module: APT_MODULES.m1_base64_encode
+    fn: run
+    env: venvA
+    args:
+      image_path: demo_image.png
+  - name: m2
+    module: APT_MODULES.m2_build_payload
+    fn: run
+    env: venvA
+    args:
+      image_b64: $m1
+      apt_prompt: "Describe the image briefly."
+      model: demo-model
+  - name: m3
+    module: APT_MODULES.m3_parse_response
+    fn: run
+    env: venvA
+    args:
+      response: $m2
+  - name: m4
+    module: APT_MODULES.m4_call_proxy
+    fn: run
+    env: venvA
+    args:
+      base_url: $m0
+      path: /chat/completions
+      payload: $m2
+      dry_run: true

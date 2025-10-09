@@ -1,0 +1,75 @@
+# Algebraic Pipeline Theory (APT) Methodology Applied
+# Step 1: Modular Pipeline Construction
+# Let x_1 = Netlify universal proxy OpenAPI spec
+# Let y_1 = {info, servers, tags, paths, components} = modular pipeline sections
+openapi: 3.0.0
+info: # y_1[0]
+  title: Netlify Llama Universal Proxy API
+  version: 1.0.0
+  description: |
+    Universal proxy API for Llama endpoints, served via Netlify Functions. Drag-and-drop compatible for any frontend project. All Llama API endpoints are accessible via a single Netlify function endpoint.
+servers: # y_1[1]
+  - url: https://llama-universal-netlify-project.netlify.app/.netlify/functions/llama-proxy
+    description: Production Netlify Proxy
+  - url: http://localhost:8888/.netlify/functions/llama-proxy
+    description: Local Netlify Dev Proxy
+
+# Step 2: Paths as Pipeline Modules
+paths: # y_1[3]
+  /:
+    post:
+      # Let p_1 = /, r_1 = request, q_1 = response
+      tags: [Proxy]
+      summary: Proxy any Llama API endpoint
+      description: |
+        Forwards the request to the Llama API endpoint specified by the `path` query parameter (e.g., /chat/completions, /upload-image).
+      parameters:
+        - in: query
+          name: path
+          required: true
+          schema:
+            type: string
+          description: Llama API path to proxy (e.g., /chat/completions)
+      requestBody: # r_1
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProxyRequest' # s_1
+      responses: # q_1
+        '200':
+          description: Success (proxied response from Llama API)
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse' # s_2
+        '500':
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse' # s_2
+
+# Step 3: Components as Pipeline Modules
+components: # y_1[4]
+  schemas:
+    ProxyRequest: # s_1
+      type: object
+      description: Request body is passed directly to the Llama API endpoint.
+      additionalProperties: true
+    ErrorResponse: # s_2
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: object
+          required: [message]
+          properties:
+            message:
+              type: string
