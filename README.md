@@ -1,4 +1,6 @@
-# APT Algebraic Pipeline Theory Experimental Workspace
+<img width="1896" height="1071" alt="Screenshot 2025-10-09 005136" src="https://github.com/user-attachments/assets/b0bb6bcd-1fd8-47aa-85f2-a07a4d05c7ec" />
+ 
+#APT_Algebraic Pipeline Theory Experimental Workspace
 
 ## Overview
 This repository is a complete experimental implementation of Algebraic Pipeline Theory (APT), demonstrating modular, algebraic, and reproducible pipeline development for research, automation, and collaborative projects.
