@@ -8,7 +8,7 @@ This document records experimental results, algebraic pipeline structures, and k
 ## 1. Modular Decomposition Example
 **Image:** examples/0164.png
 
-**APT Output:**
+# APT Output:
 ```
 Step 2: Decompose into Modular Components
 - $S$: The letter "S"
@@ -23,7 +23,7 @@ Step 2: Decompose into Modular Components
 ## 2. Explicit Variable Definition Example
 **Image:** examples/IMG_5240_0604.jpg
 
-**APT Output:**
+# APT Output:
 ```
 Step 2: Assign Variables
 - **Background**: $B$
@@ -37,7 +37,7 @@ Step 2: Assign Variables
 ## 3. Algebraic Relationship Example
 **Image:** examples/IMG_5240_0604.jpg
 
-**APT Output:**
+# APT Output:
 ```
 The spider $S$ is composed of its body $Sb$ and its legs $L$:
 $S = Sb \cup L$
@@ -51,7 +51,7 @@ $S \subset B$
 ## 4. Pipeline Trace Example
 **Image:** examples/0164.png
 
-**APT Output:**
+# APT Output:
 ```
 Algebraic pipeline trace:
 1. **Input**: $\text{Stosh}(x, y, z) + p(x, y, z, t)$
@@ -74,12 +74,12 @@ Algebraic pipeline trace:
 ---
 
 ## 6. Research Conclusions
-- APT enables modular, algebraic, and compositional image understanding.
-- Outputs are reproducible, explainable, and suitable for graph-based reasoning.
-- The pipeline generalizes across technical, scientific, and structured real-world images.
+* APT enables modular, algebraic, and compositional image understanding.
+* Outputs are reproducible, explainable, and suitable for graph-based reasoning.
+* The pipeline generalizes across technical, scientific, and structured real-world images.
 
 ---
 
 ## 7. References
-- See `apt_image_methods_results.json` for full outputs.
-- See `pipeline.py` and `apt_image_methods_pipeline.py` for implementation details.
+* See `apt_image_methods_results.json` for full outputs.
+* See `pipeline.py` and `apt_image_methods_pipeline.py` for implementation details.

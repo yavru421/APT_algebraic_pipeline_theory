@@ -8,13 +8,13 @@ A reformatted, research-style record of the first APT-format image generation ex
 
 [Module 1] System Goal
 
-- Variables:
-  - U = User Interface visualization of APT system
-  - V = Visual representation (image)
-  - M = Set of modules in the APT system
-  - S = Style reference
+* Variables:
+* U = User Interface visualization of APT system
+* V = Visual representation (image)
+* M = Set of modules in the APT system
+* S = Style reference
 
-- Equation:
+* Equation:
 
   V = f(U, M, S)
 
@@ -23,63 +23,63 @@ A reformatted, research-style record of the first APT-format image generation ex
 
 [Module 2] Layout Structure
 
-- Variables:
-  - L1 = Treemap zone (WizTree-like overview, left 60%)
-  - L2 = Node graph zone (Geometry Nodes–like, center 30%)
-  - L3 = Inspector panel (right 10%)
-  - L4 = Toolbar and breadcrumbs (top 5%)
+* Variables:
+* L1 = Treemap zone (WizTree-like overview, left 60%)
+* L2 = Node graph zone (Geometry Nodes–like, center 30%)
+* L3 = Inspector panel (right 10%)
+* L4 = Toolbar and breadcrumbs (top 5%)
 
-- Equation:
+* Equation:
 
   Layout = {L1 (left 60%), L2 (center 30%), L3 (right 10%), L4 (top 5%)}
 
 
 [Module 3] Node Design
 
-- Variables:
-  - n_i = Node i (Python, FFmpeg, Transform, File, IO)
-  - socket_in, socket_out = Circular ports
-  - color(n_i) = Category-based color (Compute=blue, IO=orange, Transform=green, File=purple)
-  - label(n_i) = "m1: f(A,B)→C" displayed beneath the node title
+* Variables:
+* n_i = Node i (Python, FFmpeg, Transform, File, IO)
+* socket_in, socket_out = Circular ports
+* color(n_i) = Category-based color (Compute=blue, IO=orange, Transform=green, File=purple)
+* label(n_i) = "m1: f(A,B)→C" displayed beneath the node title
 
-- Equation:
+* Equation:
 
   NodeCard(n_i) = {RoundedRect + Sockets + Label + CategoryColor}
 
 
 [Module 4] Treemap Region
 
-- Variables:
-  - Tile_n = rectangular area for module n
-  - Area(Tile_n) ∝ complexity
-  - Color(Tile_n) = module category
-  - Label(Tile_n) = short name (m1, m2, …)
+* Variables:
+* Tile_n = rectangular area for module n
+* Area(Tile_n) ∝ complexity
+* Color(Tile_n) = module category
+* Label(Tile_n) = short name (m1, m2, …)
 
-- Equation:
+* Equation:
 
   Treemap = Σ Tile_n over M
 
 
 [Module 5] Typography & Iconography
 
-- Variables:
-  - Font1 = Sans-serif (Inter / SF Pro) for labels
-  - Font2 = Monospace (JetBrains Mono) for algebraic text
-  - Icon_n = Minimal vector glyph inside each node
+* Variables:
+* Font1 = Sans-serif (Inter / SF Pro) for labels
+* Font2 = Monospace (JetBrains Mono) for algebraic text
+* Icon_n = Minimal vector glyph inside each node
 
-- Equation:
+* Equation:
 
   Text(n_i) = combine(Font1(label), Font2(equation))
 
 
 [Module 6] Lighting & Atmosphere
 
-- Variables:
-  - Bg = dark, desaturated neutral tone (#1b1b1b)
-  - AccentLight = neon blue/green glow on active nodes
-  - Depth = subtle parallax shadows, 2D pseudo-depth
+* Variables:
+* Bg = dark, desaturated neutral tone (#1b1b1b)
+* AccentLight = neon blue/green glow on active nodes
+* Depth = subtle parallax shadows, 2D pseudo-depth
 
-- Equation:
+* Equation:
 
   Aesthetic = synth(Bg, AccentLight, Depth)
 

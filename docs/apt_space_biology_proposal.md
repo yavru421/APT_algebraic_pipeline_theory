@@ -6,9 +6,9 @@ The 2025 NASA Space Apps Challenge features a pressing challenge: **Build a Spac
 ---
 
 ## 1. Challenge Context
-- **Objective:** Facilitate quick access, visualization, and insights from space biology research publications.
-- **Problem:** Current systems are rigid, fragmented, and require significant manual intervention to update or expand.
-- **Solution Approach:** Use APT to create a flexible, modular pipeline capable of processing, analyzing, and visualizing publication data with minimal manual intervention.
+* **Objective:** Facilitate quick access, visualization, and insights from space biology research publications.
+* **Problem:** Current systems are rigid, fragmented, and require significant manual intervention to update or expand.
+* **Solution Approach:** Use APT to create a flexible, modular pipeline capable of processing, analyzing, and visualizing publication data with minimal manual intervention.
 
 ---
 
@@ -45,24 +45,24 @@ The APT pipeline abstracts the data flow as follows:
 ```python
 o = process_data(b, c, d, f, g, h, i, j, k) + e
 ```
-- `b`: Input publications
-- `c`: Content extraction outputs
-- `d`: Data preprocessing
-- `f`: Visualization features
-- `g`: Graph structure
-- `h`: Hierarchical categorization
-- `i`: Insights
-- `j`: Join operations
-- `k`: Knowledge graph
-- `o`: Output
-- `e`: Error handling
+* `b`: Input publications
+* `c`: Content extraction outputs
+* `d`: Data preprocessing
+* `f`: Visualization features
+* `g`: Graph structure
+* `h`: Hierarchical categorization
+* `i`: Insights
+* `j`: Join operations
+* `k`: Knowledge graph
+* `o`: Output
+* `e`: Error handling
 
 ### 2.3 Statistical & Machine Learning Operations
-- **Statistical:**
-  - `mean(o)`: Average publications per category
-  - `std(o)`: Variation in publication counts
-- **Machine Learning:**
-  - `predict(o, features)`: Predict future trends in space biology
+* **Statistical:**
+* `mean(o)`: Average publications per category
+* `std(o)`: Variation in publication counts
+* **Machine Learning:**
+* `predict(o, features)`: Predict future trends in space biology
 
 ### 2.4 Feedback Loops
 APT allows dynamic adjustments based on pipeline results:
@@ -71,8 +71,8 @@ APT allows dynamic adjustments based on pipeline results:
 if mean(o) < threshold:
     update_knowledge_graph(k)
 ```
-- Ensures consistent quality and coverage
-- Automatically updates the knowledge base with new data
+* Ensures consistent quality and coverage
+* Automatically updates the knowledge base with new data
 
 ---
 
@@ -95,10 +95,10 @@ if mean(o) < threshold:
 ---
 
 ## 5. Expected Outcomes
-- A dynamic, modular knowledge engine capable of summarizing, analyzing, and visualizing NASA bioscience publications.
-- Reduced manual overhead for updates and maintenance.
-- Predictive insights on research trends, enabling faster decision-making.
-- A scalable architecture that can expand to other space-related domains.
+* A dynamic, modular knowledge engine capable of summarizing, analyzing, and visualizing NASA bioscience publications.
+* Reduced manual overhead for updates and maintenance.
+* Predictive insights on research trends, enabling faster decision-making.
+* A scalable architecture that can expand to other space-related domains.
 
 ---
 

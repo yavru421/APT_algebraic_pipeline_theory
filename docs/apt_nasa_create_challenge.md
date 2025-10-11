@@ -6,9 +6,9 @@ The 2025 NASA Space Apps Challenge features the "Create Your Own Challenge" oppo
 ---
 
 ## 1. Challenge Context
-- **Objective:** Empower participants to develop their own challenge, app, story, lesson, or tool using NASA open data.
-- **Problem:** Traditional pipelines for using NASA data are rigid, technical, and require coding or scientific expertise.
-- **APT Solution:** Introduce a flexible, modular, and intuitive pipeline to process, analyze, and visualize NASA datasets for any use case.
+* **Objective:** Empower participants to develop their own challenge, app, story, lesson, or tool using NASA open data.
+* **Problem:** Traditional pipelines for using NASA data are rigid, technical, and require coding or scientific expertise.
+* **APT Solution:** Introduce a flexible, modular, and intuitive pipeline to process, analyze, and visualize NASA datasets for any use case.
 
 ---
 
@@ -44,16 +44,16 @@ The APT pipeline abstracts NASA data utilization as a single algebraic expressio
 ```python
 o = process_data(b, c, d, f, g, h, j, k) + a
 ```
-- `b`: NASA data input
-- `c`: Content extraction
-- `d`: Data processing
-- `f`: Visualization features
-- `g`: Knowledge graph
-- `h`: Hierarchical categorization
-- `j`: Data integration
-- `k`: Insights generation
-- `o`: Final output
-- `a`: Error handling and validation
+* `b`: NASA data input
+* `c`: Content extraction
+* `d`: Data processing
+* `f`: Visualization features
+* `g`: Knowledge graph
+* `h`: Hierarchical categorization
+* `j`: Data integration
+* `k`: Insights generation
+* `o`: Final output
+* `a`: Error handling and validation
 
 This structure allows participants to **focus on exploration and creativity** rather than complex coding.
 
@@ -80,22 +80,22 @@ This methodology allows participants to **treat NASA data as a sandbox** for exp
 APT is versatile enough to support all suggested challenge types:
 
 1. **Storytelling**: Convert NASA datasets into narratives or multimedia experiences.
-   - Example: "Experience a Martian dust storm from satellite telemetry."
+* Example: "Experience a Martian dust storm from satellite telemetry."
 2. **Educational**: Build interactive lessons or apps for learners.
-   - Example: Solar activity lesson showing flare patterns and their effects on Earth.
+* Example: Solar activity lesson showing flare patterns and their effects on Earth.
 3. **Artistic**: Transform numeric datasets into generative art or music.
-   - Example: Sonification of planetary orbits or cosmic radiation events.
+* Example: Sonification of planetary orbits or cosmic radiation events.
 4. **Tool Development**: Empower citizen scientists with intuitive apps or dashboards.
-   - Example: Real-time wildfire tracking using Earth observation datasets.
+* Example: Real-time wildfire tracking using Earth observation datasets.
 
 ---
 
 ## 6. Advantages of APT in This Challenge
-- **Accessibility:** Enables non-experts to engage with NASA data.
-- **Modularity:** Swap or upgrade components (visualization, ML, processing) without disrupting the pipeline.
-- **Scalability:** Handle single datasets or massive streams effortlessly.
-- **Rapid Prototyping:** Quickly build new challenges, tools, or lessons.
-- **Cross-Disciplinary Utility:** Supports science, education, art, and citizen science simultaneously.
+* **Accessibility:** Enables non-experts to engage with NASA data.
+* **Modularity:** Swap or upgrade components (visualization, ML, processing) without disrupting the pipeline.
+* **Scalability:** Handle single datasets or massive streams effortlessly.
+* **Rapid Prototyping:** Quickly build new challenges, tools, or lessons.
+* **Cross-Disciplinary Utility:** Supports science, education, art, and citizen science simultaneously.
 
 ---
 

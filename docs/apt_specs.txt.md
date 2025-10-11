@@ -113,9 +113,10 @@ APT supports algebraic representations of ML models:
 3. **Operations Execution:** Mathematical, statistical, and ML operations applied on internal variables.
 4. **Output Remapping:** Results are returned using user-defined variable names.
 
-**Example:**
+# Example:
 
 ```python
+
 # User-defined variables
 user_vars = {
     "temp": "b",
@@ -126,6 +127,7 @@ user_vars = {
 
 # Linear regression in APT
 pred = temp * weights + residuals
+
 # Returns result as 'pred' (mapped from 'o')
 ```
 

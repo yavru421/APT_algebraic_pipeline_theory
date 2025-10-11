@@ -8,15 +8,15 @@ APT is a novel methodology for designing and executing complex workflows, pipeli
 
 ## Key Concepts
 
- - **Algebraic Notation & Variable Indexing:** Pipelines are defined using algebraic equations, e.g., $y_2 = f(x_1, x_3)$, with explicit variable and module indices.
- - **Pipeline Snapshot:** Each pipeline execution is traceable via indexed snapshots, enabling reproducibility and auditability.
- - **Module Index:** Every pipeline module is assigned a unique index for dependency resolution and modular composition.
- - **Dependency Graph:** All module and variable dependencies are resolved and documented, forming a transparent execution graph.
- - **Execution Log:** All steps, variables, and results are logged in algebraic form for full traceability.
- - **Modularity:** Pipelines are composed of interchangeable modules.
- - **Scalability:** Designed to grow with project complexity.
- - **Interoperability:** Can integrate with various tools and domains.
- - **Transparency:** Explicit definition of workflow logic and dependencies.
+* **Algebraic Notation & Variable Indexing:** Pipelines are defined using algebraic equations, e.g., $y_2 = f(x_1, x_3)$, with explicit variable and module indices.
+* **Pipeline Snapshot:** Each pipeline execution is traceable via indexed snapshots, enabling reproducibility and auditability.
+* **Module Index:** Every pipeline module is assigned a unique index for dependency resolution and modular composition.
+* **Dependency Graph:** All module and variable dependencies are resolved and documented, forming a transparent execution graph.
+* **Execution Log:** All steps, variables, and results are logged in algebraic form for full traceability.
+* **Modularity:** Pipelines are composed of interchangeable modules.
+* **Scalability:** Designed to grow with project complexity.
+* **Interoperability:** Can integrate with various tools and domains.
+* **Transparency:** Explicit definition of workflow logic and dependencies.
 
 ## Next Steps
 
@@ -56,26 +56,26 @@ Refer to `apm_research/` for ongoing research notes and updates.
 
 
 ### Key Strengths
-- **Transparency & Traceability:** Every transformation, mapping, and result is documented via indexed algebraic notation, enabling full auditability and reproducibility.
-- **Modularity:** Pipeline steps are clearly separated, indexed, and interchangeable, supporting scalable and maintainable workflows.
-- **Explicit Logic:** All variables, modules, and dependencies are defined before use, eliminating ambiguity and supporting reliable execution.
-- **Professional Output:** The APT approach produces concise, relevant, and traceable outputs suitable for research, engineering, and professional contexts.
+* **Transparency & Traceability:** Every transformation, mapping, and result is documented via indexed algebraic notation, enabling full auditability and reproducibility.
+* **Modularity:** Pipeline steps are clearly separated, indexed, and interchangeable, supporting scalable and maintainable workflows.
+* **Explicit Logic:** All variables, modules, and dependencies are defined before use, eliminating ambiguity and supporting reliable execution.
+* **Professional Output:** The APT approach produces concise, relevant, and traceable outputs suitable for research, engineering, and professional contexts.
 
 ### Methodological Insights
-- The algebraic pipeline model enforces discipline in workflow design, requiring explicit variable and module management.
-- Stepwise execution logs and dependency graphs provide a robust audit trail, supporting debugging and iterative refinement.
-- Compared to traditional methods, APT offers superior reproducibility, auditability, and clarity of logic.
+* The algebraic pipeline model enforces discipline in workflow design, requiring explicit variable and module management.
+* Stepwise execution logs and dependency graphs provide a robust audit trail, supporting debugging and iterative refinement.
+* Compared to traditional methods, APT offers superior reproducibility, auditability, and clarity of logic.
 
 ### Actionable Recommendations
-- Continue to formalize algebraic syntax and notation for pipeline definitions.
-- Expand executor engine capabilities for more complex, multi-domain workflows.
-- Integrate visualization tools for dependency graphs and execution logs.
-- Develop best practices for modular pipeline composition and snapshot management.
+* Continue to formalize algebraic syntax and notation for pipeline definitions.
+* Expand executor engine capabilities for more complex, multi-domain workflows.
+* Integrate visualization tools for dependency graphs and execution logs.
+* Develop best practices for modular pipeline composition and snapshot management.
 
 ### Future Directions
-- Extend APT to support dynamic pipeline reconfiguration and adaptive execution.
-- Explore interoperability with external tools and standards for broader adoption.
-- Foster community-driven documentation and example libraries to accelerate learning and usage.
+* Extend APT to support dynamic pipeline reconfiguration and adaptive execution.
+* Explore interoperability with external tools and standards for broader adoption.
+* Foster community-driven documentation and example libraries to accelerate learning and usage.
 
 ---
 

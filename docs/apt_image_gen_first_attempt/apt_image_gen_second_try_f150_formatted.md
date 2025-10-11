@@ -8,36 +8,36 @@ Reformatted APT prompt and prompt-engineering notes for the photorealistic truck
 
 [Module 1] System Goal
 
-- Variables:
-  - T = 2014 Ford F-150, 5.0L V8, white, extended cab
-  - V = Viewing angle (45-degree front 3/4)
-  - L = Lighting conditions (golden hour sunlight)
+* Variables:
+* T = 2014 Ford F-150, 5.0L V8, white, extended cab
+* V = Viewing angle (45-degree front 3/4)
+* L = Lighting conditions (golden hour sunlight)
 
-- Equation:
+* Equation:
 
   I = f(T, V, L)
 
 
 [Module 2] Truck Details
 
-- Variables:
-  - G = Correct grille (Ford F-150 2014), chrome trim, authentic headlight shape
-  - B = F-150 and "5.0L" badging on fender/tailgate
-  - W = Factory wheels, appropriate tire brand and profile
-  - Int = Textured interior visible through windows (leather, stitching)
+* Variables:
+* G = Correct grille (Ford F-150 2014), chrome trim, authentic headlight shape
+* B = F-150 and "5.0L" badging on fender/tailgate
+* W = Factory wheels, appropriate tire brand and profile
+* Int = Textured interior visible through windows (leather, stitching)
 
-- Equation:
+* Equation:
 
   Details = g(G, B, W, Int)
 
 
 [Module 3] Environmental Context
 
-- Variables:
-  - P = Cracked asphalt driveway, scattered autumn leaves, overgrown vegetation at edges
-  - Amb = Soft natural shadows and warm rim light from low sun
+* Variables:
+* P = Cracked asphalt driveway, scattered autumn leaves, overgrown vegetation at edges
+* Amb = Soft natural shadows and warm rim light from low sun
 
-- Equation:
+* Equation:
 
   Env = h(P, Amb)
 

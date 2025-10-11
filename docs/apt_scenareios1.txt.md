@@ -10,9 +10,10 @@ Absolutely. Let’s showcase **APT methodology applied across multiple disciplin
 
 **Scenario:** Predict daily temperature based on historical data, humidity, and solar radiation.
 
-**APT Implementation:**
+# APT Implementation:
 
 ```python
+
 # User-defined mapping
 user_vars = {
     "temperature": "b",
@@ -29,7 +30,7 @@ mean_residual = mean(a)
 std_residual = std(a)
 ```
 
-**APT Impact:**
+# APT Impact:
 
 * Variables can be **named naturally** (`temperature`, `humidity`) while the system internally maintains consistency.
 * All intermediate statistics (`mean(a)`, `std(a)`) are seamlessly calculated without changing variable names.
@@ -47,7 +48,7 @@ o = neural_network([b, c, d], e)
 
 **Scenario:** Predict closing price based on historical prices, trading volume, and technical indicators.
 
-**APT Implementation:**
+# APT Implementation:
 
 ```python
 user_vars = {
@@ -64,7 +65,7 @@ o = b * e[0] + c * e[1] + d * e[2] + a
 volatility = std(a)
 ```
 
-**APT Impact:**
+# APT Impact:
 
 * Financial analysts can **label variables with domain-specific names** without affecting calculation flow.
 * Changing to logistic regression for “up/down movement” requires no structural change:
@@ -81,7 +82,7 @@ o = 1 / (1 + exp(-(b*e[0] + c*e[1] + d*e[2])))
 
 **Scenario:** Predict likelihood of readmission for patients based on age, vitals, lab results.
 
-**APT Implementation:**
+# APT Implementation:
 
 ```python
 user_vars = {
@@ -98,7 +99,7 @@ o = 1 / (1 + exp(-(b*e[0] + c*e[1] + d*e[2] + a)))
 mean_risk_error = mean(a)
 ```
 
-**APT Impact:**
+# APT Impact:
 
 * Clinicians can read variable names **without thinking in terms of abstract algebra symbols**.
 * Consonant/vowel system ensures **error, output, and weights** are consistent.
@@ -116,7 +117,7 @@ o = decision_tree([b, c, d])
 
 **Scenario:** Compute optimal steering angle based on sensor inputs, speed, and obstacle distance.
 
-**APT Implementation:**
+# APT Implementation:
 
 ```python
 user_vars = {
@@ -132,7 +133,7 @@ user_vars = {
 o = neural_network([b, c, d], e) + a
 ```
 
-**APT Impact:**
+# APT Impact:
 
 * Engineers can **swap out sensors or models** without renaming internal variables.
 * Error correction (`a`) and output (`o`) remain standard, ensuring **robust feedback loops**.
@@ -145,7 +146,7 @@ o = neural_network([b, c, d], e) + a
 
 **Scenario:** Predict whether a customer will convert based on website interactions, email opens, and past purchases.
 
-**APT Implementation:**
+# APT Implementation:
 
 ```python
 user_vars = {
@@ -162,7 +163,7 @@ o = 1 / (1 + exp(-(b*e[0] + c*e[1] + d*e[2] + a)))
 conversion_std = std(a)
 ```
 
-**APT Impact:**
+# APT Impact:
 
 * Marketing analysts can **label variables with domain-specific terms**, increasing clarity.
 * Switching to ensemble methods or neural networks requires **no restructuring**, just function substitution.

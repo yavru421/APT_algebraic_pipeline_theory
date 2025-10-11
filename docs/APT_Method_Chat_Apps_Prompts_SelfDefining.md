@@ -9,9 +9,9 @@
 
 ## 2. Modular Decomposition (Task)
 "Apply Algebraic Pipeline Theory (APT):
-- Decompose my request into modules
-- Define all variables algebraically
-- Show the execution trace in algebraic form
+* Decompose my request into modules
+* Define all variables algebraically
+* Show the execution trace in algebraic form
 APT means every step, variable, and dependency is indexed and traceable."
 
 ---
@@ -28,11 +28,11 @@ APT means every step, variable, and dependency is indexed and traceable."
 
 ## 5. Full APT Pipeline (Comprehensive)
 "Use Algebraic Pipeline Theory (APT):
-- Modular decomposition
-- Explicit variable definition
-- Algebraic relationships
-- Dependency resolution
-- Traceable execution
+* Modular decomposition
+* Explicit variable definition
+* Algebraic relationships
+* Dependency resolution
+* Traceable execution
 APT means all steps are documented and output in algebraic form."
 
 ---
