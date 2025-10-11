@@ -1,10 +1,17 @@
 name: Python tests
 
 on:
-  push:
-    branches: [ main ]
+  # Only run on pull requests to main when code changes (avoid running for docs-only edits)
   pull_request:
     branches: [ main ]
+    paths:
+      - 'scripts/**'
+      - 'src/**'
+      - 'apt_pipeline_pkg/**'
+      - 'tests/**'
+      - 'requirements.txt'
+  # Allow manual runs from the Actions tab
+  workflow_dispatch: {}
 
 jobs:
   test:
