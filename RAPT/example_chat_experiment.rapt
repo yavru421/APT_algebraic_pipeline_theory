@@ -1,0 +1,15 @@
+# RAPT Example: Chat Experiment Pipeline
+name: Chat Experiment
+modules:
+  - id: m1
+    type: prompt_builder
+    input: prompt_template.txt
+    output: prompt.json
+  - id: m2
+    type: call_chat_api
+    input: prompt.json
+    output: chat_response.json
+  - id: m3
+    type: parse_response
+    input: chat_response.json
+    output: parsed.txt

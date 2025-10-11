@@ -10,6 +10,14 @@ APT (Algebraic Pipeline Theory) is a formal methodology for specifying, composin
 - **Traceability:** Every step and variable can be logged, snapshotted, or audited.
 - **Reproducibility:** The pipeline equation, variable definitions, and environment together fully determine the output.
 
+---
+**Algebraic Recursion and Hierarchy Principle:**
+APT must support recursive and hierarchical composition, such that:
+- Any module $m_i$ may invoke itself (recursion) or orchestrate a sub-pipeline (hierarchy).
+- Recursive relationships: $y = m(y, x)$, with explicit base case $y_0$.
+- Hierarchical relationships: $y = m^*(x)$, where $m^*$ is a pipeline $[m_1, m_2, ..., m_k]$.
+- All recursion depth, base cases, and sub-pipeline boundaries must be documented for traceability and reproducibility.
+
 ## 3. Minimal APT Pipeline Example
 Let $x_1$ = image, $x_2$ = prompt.
 

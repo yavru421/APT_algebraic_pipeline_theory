@@ -1,0 +1,31 @@
+{
+  "games": [
+    {
+      "filename": "sample_game_1.png",
+      "date": "2025-10-09",
+      "timestamp": "2025-10-09T15:30:00",
+      "players": [
+        {
+          "name": "John Doe",
+          "score": 185
+        },
+        {
+          "name": "Jane Smith",
+          "score": 172
+        },
+        {
+          "name": "Bob Johnson",
+          "score": 158
+        }
+      ],
+      "raw_llama_data": "Sample bowling score data",
+      "exif_summary": "Sample EXIF metadata"
+    }
+  ],
+  "metadata": {
+    "created": "2025-10-09T15:30:00",
+    "version": "1.0",
+    "last_updated": "2025-10-09T15:30:00",
+    "total_games": 1
+  }
+}

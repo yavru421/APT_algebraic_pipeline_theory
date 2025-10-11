@@ -1,48 +1,40 @@
-# .gitignore for APT codebase
-# Python
+
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-*.pyo
-*.pyd
-*.pyc
-*.pdb
-*.egg-info/
-*.egg
-*.env
-.env
-venv/
-ENV/
+*.so
 
-# Jupyter Notebooks
+# Virtual environments
+APT_ENV/venvs/
+venv/
+.env/
+.venv/
+
+# Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
-# VSCode
-.vscode/
-*.code-workspace
+# Output, archive, and results
+archive/
+results/
+APT_OUTPUTS/
+APT_PIPELINE_RUNS/
+APT_LOGS/
+APT_INPUTS/
+APT-AlgebraicPipelineTheory/*.html
+APT-AlgebraicPipelineTheory/*.sql
+APT-AlgebraicPipelineTheory/package.json
+APT-AlgebraicPipelineTheory/requirements.txt
+APT-AlgebraicPipelineTheory/server.js
 
-# OS
+# Misc
+*.log
+*.tmp
+*.bak
+*.swp
 .DS_Store
 Thumbs.db
 
-# Logs and outputs
-*.log
-output*.txt
-output_debug.txt
-
-# Research and markdown artifacts
-*.md.bak
-
-# Misc
-*.swp
-*.bak
-*.tmp
-images/
-archive/
-results/
-*.pdf
-*.png
-*.jpg
-*.jpeg
-*.svg
-*.bmp
-*.tiff
+# Exclude manual, docs, and modules from ignore
+!APT_MANUAL/
+!docs/
+!APT_MODULES/

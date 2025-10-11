@@ -1,0 +1,15 @@
+# RAPT Example: Basic Pipeline
+name: Basic Example
+modules:
+  - id: m1
+    type: base64_encode
+    input: image.png
+    output: image_b64.txt
+  - id: m2
+    type: build_payload
+    input: image_b64.txt
+    output: payload.json
+  - id: m3
+    type: call_api
+    input: payload.json
+    output: response.json

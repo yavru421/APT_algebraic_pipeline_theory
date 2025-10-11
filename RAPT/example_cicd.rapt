@@ -1,0 +1,19 @@
+# RAPT Example: CI/CD Pipeline
+name: CI/CD Example
+modules:
+  - id: m1
+    type: checkout_code
+    input: repo_url.txt
+    output: source/
+  - id: m2
+    type: run_tests
+    input: source/
+    output: test_report.txt
+  - id: m3
+    type: build_artifact
+    input: source/
+    output: artifact.zip
+  - id: m4
+    type: deploy
+    input: artifact.zip
+    output: deployment_log.txt

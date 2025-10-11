@@ -5,3 +5,57 @@ x2 = "demo_image.png"
 
 # Equation with per-call env annotations
 Y = m4(base_url=m0(openapi_file=x1) @ venvA, path="/chat/completions", payload=m2(image_b64=m1(image_path=x2) @ venvA, apt_prompt="Describe the image briefly.", model="demo-model") @ venvA, dry_run=true) @ venvA
+
+# ---
+
+
+# Bowling Team Scheduler APT Pipeline (Updated for DNG conversion, OCR + EXIF, 2025-10-09)
+pipeline:
+	- name: m0
+		fn: m0_convert_dng
+		inputs: { file_path: x1 }
+		output: x1a
+	- name: m1
+		fn: m1_schedule_ui
+		inputs: { schedule_events: x2, on_upload: handler }
+		output: y1
+	- name: m2
+		fn: m2_upload_image
+		inputs: { file_path: x1a }
+		output: y2
+	- name: m3
+		fn: m3_send_image_to_api
+		inputs: { image_path: y2 }
+		output: y3
+	- name: m4
+		fn: m4_parse_api_response
+		inputs: { api_response: y3 }
+		output: y4
+	- name: m6
+		fn: m6_extract_exif_metadata
+		inputs: { image_path: y2 }
+		output: y6
+	- name: m5
+		fn: m5_display_schedule_and_scores
+		inputs: { schedule_events: x2, extracted_text: y4, exif_metadata: y6 }
+		output: y5
+
+
+inputs:
+	x1: Image file uploaded by user (can be .dng or other format)
+	x2: Calendar event data (Tuesdays 7pm)
+
+outputs:
+	x1a: Converted image file (PNG/JPG)
+	y1: UI with calendar events
+	y2: Uploaded image path
+	y3: API response (Llama image understanding)
+	y4: Extracted text/data from image
+	y5: Final display (schedule + scores + metadata)
+	y6: Extracted EXIF metadata
+
+compliance:
+	- APT modularity: All steps are explicit modules
+	- Algebraic notation: Pipeline equation and variable mapping
+	- Traceability: All variables and outputs defined
+	- Reproducibility: Pipeline can be re-executed from this file

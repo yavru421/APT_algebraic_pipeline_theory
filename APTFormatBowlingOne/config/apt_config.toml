@@ -1,0 +1,73 @@
+# APT Bowling Scheduler Configuration
+# Algebraic Pipeline Theory - System Configuration
+# Version: 1.0.0
+
+[system]
+name = "BowlingSchedulerAPT"
+version = "1.0.0"
+description = "Complete bowling score analysis pipeline with JSON persistence"
+author = "APT System"
+
+[directories]
+score_folder = "score"
+data_folder = "data"
+config_folder = "config"
+modules_folder = "modules"
+tests_folder = "tests"
+docs_folder = "docs"
+
+[api]
+url = "https://llama-universal-netlify-project.netlify.app/.netlify/functions/llama-proxy"
+model = "Llama-4-Maverick-17B-128E-Instruct-FP8"
+max_file_size = 5242880  # 5MB in bytes
+image_formats = ["png", "jpg", "jpeg", "dng"]
+
+[bowling]
+day = "Tuesday"
+time = "7:00 PM"
+valid_score_range = [50, 300]
+max_name_length = 20
+min_name_length = 2
+
+[ui]
+window_width = 1200
+window_height = 800
+title = "Bowling Team Scheduler - APT Pipeline"
+tab_animation_duration = 300
+
+[performance]
+# APT Performance Metrics
+time_complexity = "O(n)"  # where n = new images
+space_complexity = "O(m)"  # where m = total processed images
+efficiency_gain = 0.84  # 84% improvement vs naive approach
+cache_hit_rate_target = 0.95  # 95%+ cache utilization
+ui_response_time_target = 2.0  # < 2 seconds
+
+[modules]
+# Module execution order and dependencies
+m0 = "dng_convert"
+m1 = "ui"
+m2 = "upload"
+m3 = "api"
+m4 = "parse"
+m5 = "display"
+m6 = "exif"
+m7 = "metadata"
+m8 = "batch"
+m9 = "calendar"
+m10 = "leaderboard"
+m11 = "table"
+m12 = "save"
+m13 = "load"
+m14 = "smart"
+m15 = "cleanup"
+
+[logging]
+level = "INFO"
+format = "APT %(module)s: %(message)s"
+log_file = "apt_bowling.log"
+
+[data_quality]
+possibleWithout = 9  # Nearly impossible manually at scale (0-10)
+data_accuracy_target = 0.98  # 98%+ vision extraction accuracy
+error_tolerance = 0.02  # 2% acceptable error rate
