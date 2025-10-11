@@ -66,13 +66,39 @@ V = R ∩ D, where ∩ represents the integration of high-resolution imaging and
 * **Environmental Context** **: The truck is depicted in a natural setting, with a cracked asphalt driveway and surrounding vegetation, which adds to the realism of the scene.**
 * **Lighting and Shadows** **: The lighting in the images is warm and natural, likely simulating the golden hour, which enhances the realism and aesthetic appeal of the photographs.**
 
-**Comparison with Expectations:**
+ # APT F-150 Prompt — Experiment 2
 
-**Given the prompt and the APT structure provided earlier, it seems that the generated images have successfully captured the key elements requested:**
+ ---
 
-* **Specificity** **: The images are of a white extended cab, 2014 F-150, matching the specified truck model and color.**
-* **Detail and Realism** **: The level of detail and realism in the images aligns with the expectations set by the prompt and the APT structure.**
+ ## System Goal
 
-**Conclusion:**
+ * T = 2014 Ford F-150, 5.0L V8, white, extended cab
+ * V = Viewing angle (45° front 3/4)
+ * L = Lighting conditions (warm golden-hour sunlight)
 
-**The results appear to be highly successful in generating detailed and realistic images of the specified truck. The images not only capture the truck's design elements accurately but also place it in a realistic environmental context, enhancing the overall authenticity of the representation. The use of the APT structure likely contributed to this success by ensuring that all critical aspects of the image were considered and detailed.**
+ Equation:
+
+ I = f(T, V, L)
+
+
+ ## Truck Details
+
+ * G = 2014 F-150 grille (authentic shape), chrome trim
+ * B = "5.0L" badging and F-150 badges
+ * W = Factory wheels and appropriate tire branding
+ * Int = Textured leather interior visible through windows
+
+ Details = g(G, B, W, Int)
+
+
+ ## Environment
+
+ * P = Cracked asphalt driveway, scattered autumn leaves, overgrown vegetation at edges
+ * Amb = Soft natural shadows and warm rim light from low sun
+
+ Env = h(P, Amb)
+
+
+ ## Output Prompt (Fused Expression — copy/paste)
+
+ Generate a photorealistic image of a white 2014 Ford F-150 extended cab with the 5.0L V8. Present the truck in a 45° front 3/4 view, clearly showing the authentic 2014 Ford grille, chrome trim, and visible "5.0L" badging. Include factory-style wheels and realistic tire branding. The truck should be parked on a cracked asphalt driveway with scattered autumn leaves and overgrown vegetation at the edges. Warm golden-hour sunlight should illuminate the scene, producing soft shadows and subtle rim highlights on chrome surfaces. Capture interior texture details visible through the windows (leather seats, stitching). Render photorealistically with high resolution and natural camera perspective.
