@@ -20,6 +20,7 @@ APT_OUTPUTS/
 APT_PIPELINE_RUNS/
 APT_LOGS/
 APT_INPUTS/
+prompt_collections/
 APT-AlgebraicPipelineTheory/*.html
 APT-AlgebraicPipelineTheory/*.sql
 APT-AlgebraicPipelineTheory/package.json

@@ -1,3 +1,37 @@
+# ---
+# APT Algebraic Image Generation Pipeline — PromptBase Template: Photorealistic Vehicle (Copy-Paste Template)
+
+
+## Variable slots (examples, alphabetical by file):
+YEAR,MAKE,MODEL,TRIM,COLOR,SCENE,TIME_OF_DAY,COMPOSITION,REFLECTIONS,BACKGROUND,TRAFFIC,LINES,SKY,ASPECT_RATIO,RESOLUTION,FORMAT,QUALITY,LIGHTING,EXPOSURE
+2021,Audi,A4,Premium,gray,modern city street,sunrise,cinematic composition,reflections on the bodywork,urban background,light traffic,smooth lines,pastel sky,16:9 aspect ratio,high resolution,JPEG,ultra quality,soft lighting,balanced exposure
+2019,BMW,3 Series,M Sport,black,modern city street,night,cinematic composition,reflections on the bodywork,urban background,no traffic,bold lines,starry sky,16:9 aspect ratio,high resolution,JPEG,ultra quality,cool lighting,balanced exposure
+2022,Chevrolet,Silverado,LTZ,red,modern city street,golden hour,cinematic composition,reflections on the bodywork,urban background,subtle traffic,clean lines,dramatic sky,16:9 aspect ratio,high resolution,JPEG,ultra quality,warm lighting,balanced exposure
+2021,Ford,Mustang,GT,blue,modern city street,sunset,cinematic composition,reflections on the bodywork,urban background,light traffic,sharp lines,vibrant sky,16:9 aspect ratio,high resolution,JPEG,ultra quality,warm lighting,balanced exposure
+2020,Honda,Civic,EX,silver,modern city street,morning,cinematic composition,reflections on the bodywork,urban background,light traffic,clean lines,clear sky,16:9 aspect ratio,high resolution,JPEG,ultra quality,natural lighting,balanced exposure
+2022,Jeep,Wrangler,Rubicon,green,modern city street,noon,cinematic composition,reflections on the bodywork,urban background,moderate traffic,rugged lines,bright sky,16:9 aspect ratio,high resolution,JPEG,ultra quality,natural lighting,balanced exposure
+2022,Mercedes-Benz,C-Class,AMG,white,modern city street,afternoon,cinematic composition,reflections on the bodywork,urban background,moderate traffic,elegant lines,cloudy sky,16:9 aspect ratio,high resolution,JPEG,ultra quality,soft lighting,balanced exposure
+2023,Tesla,Model S,Plaid,white,modern city street,dusk,cinematic composition,reflections on the bodywork,urban background,no traffic,smooth lines,cloudy sky,16:9 aspect ratio,high resolution,JPEG,ultra quality,cool lighting,balanced exposure
+2022,Toyota,Camry,SE,white,modern city street,golden hour,cinematic composition,reflections on the bodywork,urban background,light traffic,clean lines,dramatic sky,16:9 aspect ratio,high resolution,JPEG,ultra quality,warm lighting,balanced exposure
+
+## Constants (not user-editable)
+FORMAT = 16:9 cinematic composition, PNG
+CONFIG = seed=42, quality=ultra, lighting=natural_sunrise, aspect_ratio=16:9
+
+## APT pipeline equation
+y_final = m4(m3(m2(m1(YEAR, MAKE, MODEL, SCENE), FORMAT), CONFIG))
+
+## Prompt Template
+Photorealistic image of a {YEAR} {MAKE} {MODEL} in a {SCENE}, cinematic composition, reflections on the bodywork, urban background, clean lines, dramatic sky, 16:9 aspect ratio, high resolution, PNG, ultra quality, natural sunrise lighting, balanced exposure. (seed=42)
+
+## APT algebraic pipeline trace
+y1 = m1(YEAR, MAKE, MODEL, SCENE)
+y2 = m2(y1, FORMAT)
+y3 = m3(y2, CONFIG)
+y_final = m4(y3)
+
+## Success defined by
+The output y_final is a photorealistic image of (YEAR, MAKE, MODEL) in (SCENE) with format (FORMAT) and config (CONFIG), matching the style and content described in the prompt template.
 # Algebraic Pipeline Theory (APT)
 
 # APT: Algebraic Pipeline Theory — The Future of Computational Methodology

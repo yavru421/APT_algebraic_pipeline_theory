@@ -1,0 +1,103 @@
+Here is the generated OpenSCAD code based on the provided Algebraic Pipeline Theory (APT) structure:
+```scad
+// Assumptions:
+// - Units: millimeters
+// - Default dimensions:
+//   - stall_length: 3600 mm (12 ft)
+//   - stall_width: 3600 mm (12 ft)
+//   - aisle_width: 3600 mm (12 ft)
+//   - wall_thickness: 100 mm
+//   - roof_pitch_angle: 15°
+//   - wall_height: 3000 mm
+//   - barn_length: 14400 mm (48 ft)
+//   - barn_width: 7200 mm (24 ft)
+//   - overhang_depth: 0 mm (optional)
+
+// Variable declarations
+stall_length = 3600;
+stall_width = 3600;
+aisle_width = 3600;
+wall_thickness = 100;
+roof_pitch_angle = 15;
+wall_height = 3000;
+barn_length = 14400;
+barn_width = 7200;
+overhang_depth = 0;
+
+// Module definitions
+module M1_foundation() {
+  // Foundation/slab
+  cube([barn_length, barn_width, 100]);
+}
+
+module M2_stall_walls() {
+  // Stall walls and dividers
+  for (i = [0:1:3]) {
+    translate([i * (stall_length + wall_thickness), 0, 0]) {
+      cube([stall_length, stall_width, wall_height]);
+    }
+  }
+  for (i = [0:1:1]) {
+    translate([i * (barn_length / 2), 0, 0]) {
+      cube([wall_thickness, barn_width, wall_height]);
+    }
+  }
+}
+
+module M3_center_aisle_walls() {
+  // Enclosed center aisle walls
+  cube([barn_length, aisle_width, wall_height]);
+}
+
+module M4_roof() {
+  // Low-profile gable roof
+  rotate_extrude(angle = roof_pitch_angle) {
+    polygon(points = [[0, 0], [barn_length, 0], [barn_length / 2, barn_width]]);
+  }
+}
+
+module M5_end_walls() {
+  // End walls with doors
+  for (i = [0:1:1]) {
+    translate([i * barn_length, 0, 0]) {
+      cube([wall_thickness, barn_width, wall_height]);
+      translate([wall_thickness / 2, barn_width / 2, 0]) {
+        cube([1000, 2000, wall_height]);
+      }
+    }
+  }
+}
+
+module M6_trim() {
+  // Optional trim or overhang
+  if (overhang_depth > 0) {
+    translate([0, 0, wall_height]) {
+      cube([barn_length, overhang_depth, 100]);
+    }
+  }
+}
+
+// Main assembly
+module MAIN() {
+  M1_foundation();
+  translate([0, 0, 100]) {
+    M2_stall_walls();
+    M3_center_aisle_walls();
+    M4_roof();
+    M5_end_walls();
+    M6_trim();
+  }
+}
+
+// Execution trace
+M1_foundation();
+M2_stall_walls();
+M3_center_aisle_walls();
+M4_roof();
+M5_end_walls();
+MAIN();
+
+// Output
+MAIN();
+```
+Note that this code assumes a low-profile gable roof with a pitch angle of 15°, and uses the `rotate_extrude` function to generate the roof geometry. The `M6_trim` module is optional and can be removed if no trim or overhang is desired. The code also includes clear door and wall placements for the aisle and stalls.

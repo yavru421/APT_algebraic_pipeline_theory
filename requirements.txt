@@ -1,2 +1,3 @@
 pyyaml
 requests
+# For OpenSCAD CLI view, install OpenSCAD from https://openscad.org/ (system dependency)
