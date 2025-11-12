@@ -1,0 +1,38 @@
+# APT Pipeline for Pattern Discovery and Formula Harvesting
+# Equation: y_final = m_synthesis(m55(x_params), m56(x_params), m57(x_dim), m58(x_boundary), m59(x_curve), m60(a, b))
+pipeline:
+  - name: m55
+    module: APT_MODULES.m55_fractal_tiling
+    fn: generate_fractal_tiling
+    args: { x_params: { "type": "penrose", "depth": 3 } }
+    output: y_fractal
+  - name: m56
+    module: APT_MODULES.m56_sierpinski_curve
+    fn: generate_sierpinski_curve
+    args: { x_params: { "depth": 4 } }
+    output: y_curve
+  - name: m57
+    module: APT_MODULES.m57_higher_dim_polytope
+    fn: generate_higher_dim_polytope
+    args: { x_dim: 4 }
+    output: y_polytope
+  - name: m58
+    module: APT_MODULES.m58_fourier_transform_polygon
+    fn: compute_fourier_transform_polygon
+    args: { x_boundary: [0, 1, 2, 3] }
+    output: y_fourier
+  - name: m59
+    module: APT_MODULES.m59_calculus_of_variations
+    fn: optimize_curve_calculus_of_variations
+    args: { x_curve: [0, 1, 2, 3] }
+    output: y_optimal
+  - name: m60
+    module: APT_MODULES.m60_geometric_algebra
+    fn: compute_geometric_wedge
+    args: { a: [1, 0, 0], b: [0, 1, 0] }
+    output: y_wedge
+  - name: m_synthesis
+    module: APT_MODULES.m61_pattern_synthesis
+    fn: synthesize_patterns
+    args: { y_fractal: $m55, y_curve: $m56, y_polytope: $m57, y_fourier: $m58, y_optimal: $m59, y_wedge: $m60 }
+    output: y_final

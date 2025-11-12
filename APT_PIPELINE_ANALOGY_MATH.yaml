@@ -1,0 +1,63 @@
+# APT Pipeline for Analogy and Math Techniques to Determine Needed Math for P vs NP
+# Equation: y_math = m53(m52(m51(m50(m49(m48(m47(m46(m45(m44(m43(m42(x_sat))))))))))))
+pipeline:
+  - name: m42
+    module: APT_MODULES.m42_boolean_satisfiability
+    fn: solve_sat
+    args: { x_sat_instance: "(A OR B) AND (NOT A OR C)" }
+    output: y_sat
+  - name: m43
+    module: APT_MODULES.m43_linear_programming_relaxations
+    fn: relax_ilp
+    args: { x_ilp: { "constraints": "dummy" } }
+    output: y_lp
+  - name: m44
+    module: APT_MODULES.m44_cryptography_randomness
+    fn: assess_crypto_hardness
+    args: { x_crypto_problem: "factoring" }
+    output: y_crypto
+  - name: m45
+    module: APT_MODULES.m45_algebraic_geometry_invariants
+    fn: compute_invariant
+    args: { x_polynomial: "x^2 + y^2 - 1" }
+    output: y_inv
+  - name: m46
+    module: APT_MODULES.m46_analytic_combinatorics
+    fn: analyze_asymptotic
+    args: { x_structure: "SAT instances" }
+    output: y_asymp
+  - name: m47
+    module: APT_MODULES.m47_higher_order_fourier
+    fn: higher_order_fourier
+    args: { x_function: "XOR function" }
+    output: y_fourier
+  - name: m48
+    module: APT_MODULES.m48_prove_lower_bounds
+    fn: prove_lower_bound
+    args: { x_problem: "3-SAT" }
+    output: y_bound
+  - name: m49
+    module: APT_MODULES.m49_develop_efficient_algorithms
+    fn: develop_algorithm
+    args: { x_problem: "TSP" }
+    output: y_alg
+  - name: m50
+    module: APT_MODULES.m50_study_average_case
+    fn: study_average_case
+    args: { x_problem: "SAT" }
+    output: y_avg
+  - name: m51
+    module: APT_MODULES.m51_explore_proof_systems
+    fn: explore_proof_system
+    args: { x_system: "resolution" }
+    output: y_sys
+  - name: m52
+    module: APT_MODULES.m52_investigate_np_structure
+    fn: investigate_structure
+    args: { x_problem: "clique" }
+    output: y_struct
+  - name: m53
+    module: APT_MODULES.m53_analogy_math_synthesis
+    fn: synthesize_math
+    args: { y_sat: $m42, y_lp: $m43, y_crypto: $m44, y_inv: $m45, y_asymp: $m46, y_fourier: $m47, y_bound: $m48, y_alg: $m49, y_avg: $m50, y_sys: $m51, y_struct: $m52 }
+    output: y_math

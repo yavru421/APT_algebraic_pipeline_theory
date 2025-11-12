@@ -1,0 +1,19 @@
+equation: "y3 = m12(m11(m10(x1)))"
+
+steps:
+  - name: m10
+    fn: run
+    module: "APT_MODULES.m10_gcd_input_validate"
+    args:
+      input_path: "APT_INPUTS/gcd_input.json"
+  - name: m11
+    fn: run
+    module: "APT_MODULES.m11_gcd_compute"
+    args:
+      validated_data: "$m10"
+  - name: m12
+    fn: run
+    module: "APT_MODULES.m12_gcd_output"
+    args:
+      result: "$m11"
+      original: "$m10"

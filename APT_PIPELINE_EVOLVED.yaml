@@ -1,0 +1,33 @@
+# APT Pipeline: Parameterized, Correlated, Invariant, Visualized, Categorical
+# Equation: y_category = m67(m65(m64(m62(x_boundary, omega), m63(d, n), ...), ...))
+pipeline:
+  - name: m62
+    module: APT_MODULES.m62_fourier_param
+    fn: compute_param_fourier
+    args: { x_boundary: [0, 1, 2, 3], omega: [1, 2, 3] }
+    output: y_fourier
+  - name: m63
+    module: APT_MODULES.m63_polytope_param
+    fn: generate_param_polytope
+    args: { d: 4, n: 5 }
+    output: y_polytope
+  - name: m64
+    module: APT_MODULES.m64_cross_correlation
+    fn: cross_correlate_fourier_polytope
+    args: { y_fourier: $m62, y_polytope: $m63 }
+    output: y_corr
+  - name: m65
+    module: APT_MODULES.m65_invariant_search
+    fn: search_invariants
+    args: { y_corr: $m64, y_fourier: $m62, y_polytope: $m63 }
+    output: y_invariant
+  - name: m66
+    module: APT_MODULES.m66_visualize_embedding
+    fn: visualize_embedding
+    args: { y_invariant: $m65, y_polytope: $m63 }
+    output: y_embed
+  - name: m67
+    module: APT_MODULES.m67_category_transform
+    fn: category_transform_invariants
+    args: { y_invariant: $m65 }
+    output: y_category

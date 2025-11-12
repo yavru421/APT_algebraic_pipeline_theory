@@ -1,0 +1,30 @@
+equation: "y5 = m5(m4(m3(m2(m1(x1, x2, x3)))))"
+
+steps:
+  - name: m1
+    fn: run
+    module: "APT_MODULES.m1_load_data"
+    args:
+      train_path: "spaceship-titanic/train.csv"
+      test_path: "spaceship-titanic/test.csv"
+      sample_path: "spaceship-titanic/sample_submission.csv"
+  - name: m2
+    fn: run
+    module: "APT_MODULES.m2_mcp_features"
+    args:
+      data: "$m1"
+  - name: m3
+    fn: run
+    module: "APT_MODULES.m3_stacking"
+    args:
+      features: "$m2"
+  - name: m4
+    fn: run
+    module: "APT_MODULES.m4_blending"
+    args:
+      stacked: "$m3"
+  - name: m5
+    fn: run
+    module: "APT_MODULES.m6_llama_final"
+    args:
+      predictions: "$m4"

@@ -1,3 +1,7 @@
 pyyaml
 requests
+pandas
+scikit-learn
+xgboost
+catboost
 # For OpenSCAD CLI view, install OpenSCAD from https://openscad.org/ (system dependency)

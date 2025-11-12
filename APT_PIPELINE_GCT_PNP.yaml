@@ -1,0 +1,23 @@
+# APT Pipeline for Geometric Complexity Theory Approach to P vs NP
+# Equation: y4 = m21(m20(m19(m18(x1, x2))))
+pipeline:
+  - name: m18
+    module: APT_MODULES.m18_variety_construction
+    fn: construct_varieties
+    inputs: { p_problems: x1, np_problems: x2 }
+    output: y1
+  - name: m19
+    module: APT_MODULES.m19_representation_theory
+    fn: construct_representations
+    inputs: { p_varieties: $m18[0], np_varieties: $m18[1] }
+    output: y2
+  - name: m20
+    module: APT_MODULES.m20_orbit_separation
+    fn: analyze_orbit_separation
+    inputs: { p_representations: $m19[0], np_representations: $m19[1] }
+    output: y3
+  - name: m21
+    module: APT_MODULES.m21_proof_validation
+    fn: validate_proof
+    inputs: { separation_result: $m20 }
+    output: y4

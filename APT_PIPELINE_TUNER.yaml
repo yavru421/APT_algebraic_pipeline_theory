@@ -1,0 +1,24 @@
+equation: "y3 = m15(m14(m13(x1, x2)), x3)"
+
+steps:
+  - name: m13
+    fn: run
+    module: "APT_MODULES.m13_scores_series"
+    args:
+      scores: [0.79705, 0.80102, 0.80453]
+      labels: ["s1", "s2", "s3"]
+  - name: m14
+    fn: run
+    module: "APT_MODULES.m14_plot_scores"
+    args:
+      series: "$m13"
+  - name: m15
+    fn: run
+    module: "APT_MODULES.m15_recommend"
+    args:
+      series: "$m13"
+      plot_path: "$m14"
+      context:
+        lightgbm: true
+        stacking: true
+        interactions: true

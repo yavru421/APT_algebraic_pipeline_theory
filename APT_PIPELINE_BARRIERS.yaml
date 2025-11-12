@@ -1,0 +1,28 @@
+# APT Pipeline for Tracing Proof Barriers and Bypass Attempts
+# Equation: y_bypass = m26(m25(m24(m23(m22(x_proof)))))
+pipeline:
+  - name: m22
+    module: APT_MODULES.m22_relativizing_barrier
+    fn: check_relativizing
+    args: { proof_attempt: "relativizing proof attempt" }
+    output: y_rel
+  - name: m23
+    module: APT_MODULES.m23_natural_proofs_barrier
+    fn: check_natural
+    args: { proof_attempt: "natural proof attempt" }
+    output: y_nat
+  - name: m24
+    module: APT_MODULES.m24_diagonalization_barrier
+    fn: check_diagonalization
+    args: { proof_attempt: "diagonalization proof attempt" }
+    output: y_diag
+  - name: m25
+    module: APT_MODULES.m25_circuit_lower_bounds_barrier
+    fn: check_circuit_bounds
+    args: { proof_attempt: "simple circuit lower bounds proof attempt" }
+    output: y_circ
+  - name: m26
+    module: APT_MODULES.m26_geometric_bypass
+    fn: attempt_geometric_bypass
+    args: { proof_attempt: "geometric complexity theory proof attempt" }
+    output: y_bypass

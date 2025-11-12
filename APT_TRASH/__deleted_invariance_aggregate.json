@@ -1,0 +1,427 @@
+[
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153210",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153429",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153430",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153431",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153432",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153433",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153434",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153435",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153436",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153437",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153438",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153439",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153440",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153441",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153442",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153443",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153444",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153445",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153446",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153447",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153448",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153449",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153450",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153451",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153452",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153453",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153454",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153455",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153456",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153457",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153458",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_153459",
+    "spectral_gap": 1.0,
+    "vertex_degree_invariant": 2.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170019",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170020",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170021",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170022",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170023",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170024",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170025",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170026",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170027",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170028",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170029",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170030",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170031",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170032",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170033",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170034",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170035",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170036",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170037",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170038",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170039",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170040",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170041",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170042",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170043",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170044",
+    "spectral_gap": 0.30000000000000004,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170502",
+    "spectral_gap": 1.6146928034358408,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170503",
+    "spectral_gap": 3.282734888063663,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170504",
+    "spectral_gap": 3.759974649445288,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170505",
+    "spectral_gap": 1.6146928034358408,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170506",
+    "spectral_gap": 3.282734888063663,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170507",
+    "spectral_gap": 1.6146928034358408,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170508",
+    "spectral_gap": 3.282734888063663,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170509",
+    "spectral_gap": 3.759974649445288,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170510",
+    "spectral_gap": 1.6146928034358408,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170511",
+    "spectral_gap": 3.759974649445288,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170512",
+    "spectral_gap": 1.6146928034358408,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170513",
+    "spectral_gap": 3.282734888063663,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170514",
+    "spectral_gap": 1.6146928034358408,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170515",
+    "spectral_gap": 3.282734888063663,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170516",
+    "spectral_gap": 3.759974649445288,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170517",
+    "spectral_gap": 3.282734888063663,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170518",
+    "spectral_gap": 3.759974649445288,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170519",
+    "spectral_gap": 1.6146928034358408,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170520",
+    "spectral_gap": 3.282734888063663,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170521",
+    "spectral_gap": 1.6146928034358408,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170522",
+    "spectral_gap": 3.282734888063663,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170523",
+    "spectral_gap": 3.759974649445288,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170524",
+    "spectral_gap": 1.6146928034358408,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170525",
+    "spectral_gap": 3.282734888063663,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170526",
+    "spectral_gap": 1.6146928034358408,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170527",
+    "spectral_gap": 3.282734888063663,
+    "vertex_degree_invariant": 1.0
+  },
+  {
+    "run_dir": "APT_PIPELINE_RUNS\\20251022_170528",
+    "spectral_gap": 3.759974649445288,
+    "vertex_degree_invariant": 1.0
+  }
+]

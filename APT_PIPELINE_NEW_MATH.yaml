@@ -1,0 +1,38 @@
+# APT Pipeline for New Mathematics Approaches to P vs NP
+# Equation: y_synthesis = m37(m36(m35(m34(m33(m32(m31(x_problems)))))))
+pipeline:
+  - name: m31
+    module: APT_MODULES.m31_non_commutative_geometry
+    fn: construct_non_commutative_varieties
+    args: { x_problems: ["SAT", "TSP"] }
+    output: y_nc
+  - name: m32
+    module: APT_MODULES.m32_higher_category_theory
+    fn: compute_homotopy_types
+    args: { x_problems: ["SAT", "TSP"] }
+    output: y_homo
+  - name: m33
+    module: APT_MODULES.m33_infinite_dim_representations
+    fn: study_infinite_representations
+    args: { x_algebras: ["differential_operators", "virasoro"] }
+    output: y_reps
+  - name: m34
+    module: APT_MODULES.m34_elliptic_curves_modular
+    fn: construct_elliptic_curves
+    args: { x_problems: ["SAT", "TSP"] }
+    output: y_curves
+  - name: m35
+    module: APT_MODULES.m35_complex_analysis
+    fn: apply_complex_analysis
+    args: { x_problems: ["SAT", "TSP"] }
+    output: y_complex
+  - name: m36
+    module: APT_MODULES.m36_berkovich_spaces
+    fn: develop_berkovich_framework
+    args: { x_problems: ["SAT", "TSP"] }
+    output: y_berk
+  - name: m37
+    module: APT_MODULES.m37_synthesis
+    fn: synthesize_proof
+    args: { y_nc: $m31, y_homo: $m32, y_reps: $m33, y_curves: $m34, y_complex: $m35, y_berk: $m36 }
+    output: y_synthesis
