@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FuseTor Panelboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        margin: 0;
+        background: #111;
+        font-family: "Segoe UI", sans-serif;
+        user-select: none;
+        overflow-x: hidden;
+    }
+
+    /* Background metal texture */
+    .panel {
+        width: 100%;
+        min-height: 100vh;
+        padding: 40px;
+        background: linear-gradient(145deg, #3c3c3c, #1d1d1d);
+        background-size: cover;
+        border: 6px solid #222;
+        box-shadow: inset 0 0 40px rgba(0,0,0,0.9);
+    }
+
+    /* Nameplate */
+    .nameplate {
+        width: 420px;
+        margin: 0 auto 40px auto;
+        padding: 18px;
+        background: #222;
+        border: 4px solid #555;
+        text-align: center;
+        color: #e5e5e5;
+        font-size: 26px;
+        letter-spacing: 1px;
+        font-weight: 700;
+        text-shadow: 0 0 8px #000;
+    }
+
+    .subtitle {
+        margin-top: 6px;
+        font-size: 14px;
+        letter-spacing: 2px;
+        color: #999;
+    }
+
+    /* Grid layout for breakers */
+    .breaker-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    /* Breaker housing */
+    .breaker {
+        background: #2b2b2b;
+        padding: 20px;
+        border: 3px solid #555;
+        border-radius: 8px;
+        box-shadow: inset 0 0 15px rgba(0,0,0,0.7);
+    }
+
+    .breaker-label {
+        font-size: 17px;
+        margin-bottom: 14px;
+        color: #e4e4e4;
+        text-shadow: 0 0 3px #000;
+    }
+
+    /* LED light */
+    .led {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 10px;
+        box-shadow: 0 0 8px #000;
+    }
+
+    .led.off { background: #440000; }
+    .led.green { background: #00ff55; box-shadow: 0 0 10px #00ff55; }
+    .led.yellow { background: #f7ff00; box-shadow: 0 0 10px #f7ff00; }
+    .led.red { background: #ff3b3b; box-shadow: 0 0 10px #ff3b3b; }
+
+    /* Toggle switch */
+    .switch {
+        position: relative;
+        width: 70px;
+        height: 140px;
+        background: #111;
+        border: 3px solid #444;
+        margin: 15px auto;
+        border-radius: 6px;
+        box-shadow: inset 0 -10px 20px rgba(0,0,0,0.7);
+        cursor: pointer;
+    }
+
+    .switch-handle {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 60px;
+        height: 60px;
+        background: #333;
+        top: 75px;
+        border-radius: 6px;
+        border: 3px solid #555;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.8);
+        transition: top 0.2s ease;
+    }
+
+    .switch.on .switch-handle {
+        top: 5px;
+        background: #555;
+    }
+
+    .switch-label {
+        text-align: center;
+        margin-top: 12px;
+        color: #aaa;
+        font-size: 13px;
+        letter-spacing: 1px;
+    }
+
+    .breaker-links {
+        margin-top: 15px;
+        display: grid;
+        gap: 8px;
+    }
+
+    .breaker-links a {
+        display: block;
+        padding: 8px 10px;
+        background: #1a1a1a;
+        border: 1px solid #444;
+        border-radius: 4px;
+        color: #c9c9c9;
+        text-decoration: none;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+        transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .breaker-links a:hover {
+        background: #2a2a2a;
+        border-color: #888;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="panel">
+
+    <div class="nameplate">
+        Dondlinger FuseTor Panelboard
+        <div class="subtitle">RASPBERRY PI HIDDEN SERVICE CONTROL</div>
+    </div>
+
+    <div class="breaker-grid">
+
+        <!-- BREAKER TEMPLATE (clone this block for more services) -->
+        <div class="breaker">
+            <div class="breaker-label">
+                <span class="led off" id="led-ffmpeg"></span>
+                FFmpeg Forge Service
+            </div>
+                <div class="switch" data-service="ffmpeg">
+                    <div class="switch-handle"></div>
+                </div>
+                <div class="switch-label">Toggle Service</div>
+                <div class="breaker-links">
+                    <a href="ffmpeg.html">Local Panel</a>
+                    <a href="http://4wcmad.onion/ffmpeg.html" target="_blank" rel="noopener noreferrer">4wcmad.onion</a>
+                    <a href="http://5q4m6ejy7237m4cimsxagpyfbk4nhc6n5ipeehsaklb7mhalaifp3myd.onion/ffmpeg.html" target="_blank" rel="noopener noreferrer">5q4m6ejy7237m4cimsxagpyfbk4nhc6n5ipeehsaklb7mhalaifp3myd.onion</a>
+                    <a href="http://wmwejh36zcvsgmesq34nwdcmvef3rxfskfbw62sz4ppg3feb23moofad.onion/ffmpeg.html" target="_blank" rel="noopener noreferrer">wmwejh36zcvsgmesq34nwdcmvef3rxfskfbw62sz4ppg3feb23moofad.onion</a>
+                </div>
+            </div>
+
+            <div class="breaker">
+                <div class="breaker-label">
+                    <span class="led off" id="led-apt"></span>
+                    APT Pipeline Engine
+                </div>
+                <div class="switch" data-service="apt">
+                    <div class="switch-handle"></div>
+                </div>
+                <div class="switch-label">Toggle Service</div>
+                <div class="breaker-links">
+                    <a href="apt.html">Local Panel</a>
+                    <a href="http://4wcmad.onion/apt.html" target="_blank" rel="noopener noreferrer">4wcmad.onion</a>
+                    <a href="http://5q4m6ejy7237m4cimsxagpyfbk4nhc6n5ipeehsaklb7mhalaifp3myd.onion/apt.html" target="_blank" rel="noopener noreferrer">5q4m6ejy7237m4cimsxagpyfbk4nhc6n5ipeehsaklb7mhalaifp3myd.onion</a>
+                    <a href="http://wmwejh36zcvsgmesq34nwdcmvef3rxfskfbw62sz4ppg3feb23moofad.onion/apt.html" target="_blank" rel="noopener noreferrer">wmwejh36zcvsgmesq34nwdcmvef3rxfskfbw62sz4ppg3feb23moofad.onion</a>
+                </div>
+            </div>
+
+            <div class="breaker">
+                <div class="breaker-label">
+                    <span class="led off" id="led-logs"></span>
+                    Log Chronicle Server
+                </div>
+                <div class="switch" data-service="logs">
+                    <div class="switch-handle"></div>
+                </div>
+                <div class="switch-label">Toggle Service</div>
+                <div class="breaker-links">
+                    <a href="logs.html">Local Panel</a>
+                    <a href="http://4wcmad.onion/logs.html" target="_blank" rel="noopener noreferrer">4wcmad.onion</a>
+                    <a href="http://5q4m6ejy7237m4cimsxagpyfbk4nhc6n5ipeehsaklb7mhalaifp3myd.onion/logs.html" target="_blank" rel="noopener noreferrer">5q4m6ejy7237m4cimsxagpyfbk4nhc6n5ipeehsaklb7mhalaifp3myd.onion</a>
+                    <a href="http://wmwejh36zcvsgmesq34nwdcmvef3rxfskfbw62sz4ppg3feb23moofad.onion/logs.html" target="_blank" rel="noopener noreferrer">wmwejh36zcvsgmesq34nwdcmvef3rxfskfbw62sz4ppg3feb23moofad.onion</a>
+                </div>
+            </div>
+
+            <div class="breaker">
+                <div class="breaker-label">
+                    <span class="led off" id="led-hidden"></span>
+                    Tor Hidden Realm
+                </div>
+                <div class="switch" data-service="hidden">
+                    <div class="switch-handle"></div>
+                </div>
+                <div class="switch-label">Toggle Service</div>
+                <div class="breaker-links">
+                    <a href="hidden.html">Local Panel</a>
+                    <a href="http://4wcmad.onion/hidden.html" target="_blank" rel="noopener noreferrer">4wcmad.onion</a>
+                    <a href="http://5q4m6ejy7237m4cimsxagpyfbk4nhc6n5ipeehsaklb7mhalaifp3myd.onion/hidden.html" target="_blank" rel="noopener noreferrer">5q4m6ejy7237m4cimsxagpyfbk4nhc6n5ipeehsaklb7mhalaifp3myd.onion</a>
+                    <a href="http://wmwejh36zcvsgmesq34nwdcmvef3rxfskfbw62sz4ppg3feb23moofad.onion/hidden.html" target="_blank" rel="noopener noreferrer">wmwejh36zcvsgmesq34nwdcmvef3rxfskfbw62sz4ppg3feb23moofad.onion</a>
+                </div>
+            </div>
+
+    </div>
+
+</div>
+
+<script>
+    // Toggle animation + API stub
+    document.querySelectorAll('.switch').forEach(sw => {
+        sw.addEventListener('click', () => {
+            sw.classList.toggle('on');
+
+            const service = sw.dataset.service;
+            const led = document.getElementById("led-" + service);
+
+            if (sw.classList.contains("on")) {
+                led.className = "led green";
+                toggleService(service, true);
+            } else {
+                led.className = "led red";
+                toggleService(service, false);
+            }
+        });
+    });
+
+    // API stub – wire this to your Python backend on the Pi
+    function toggleService(name, state) {
+        console.log("Toggling", name, state);
+
+        // Example POST request to your local service controller:
+        /*
+        fetch("/api/toggle", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ service: name, active: state })
+        });
+        */
+    }
+</script>
+
+</body>
+</html>

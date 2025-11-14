@@ -1,0 +1,333 @@
+Optimized PowerShell profile loaded.
+PS C:\Users\John\Desktop\APM>
+
+
+Optimized PowerShell profile loaded.
+Optimized PowerShell profile loaded.
+Optimized PowerShell profile loaded.
+Optimized PowerShell profile loaded.
+Optimized PowerShell profile loaded.
+Optimized PowerShell profile loaded.
+PS C:\Users\John\Desktop\APM> ssh jdd@100.115.115.21
+>>
+jdd@100.115.115.21's password:
+Linux raspberrypitailnet 6.12.47+rpt-rpi-v8 #1 SMP PREEMPT Debian 1:6.12.47-1+rpt1~bookworm (2025-09-16) aarch64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Wed Nov 12 17:45:49 2025 from 100.115.119.60
+3jdd@raspberrypitailnet:~ $ 3exit
+-bash: 3exit: command not found
+jdd@raspberrypitailnet:~ $ sudo apt update
+sudo apt install -y tor nginx python3-pip python3-venv
+Hit:1 http://deb.debian.org/debian bookworm InRelease
+Get:2 http://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]
+Get:3 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+Get:4 https://download.docker.com/linux/debian bookworm InRelease [46.6 kB]
+Get:5 https://pkgs.tailscale.com/stable/debian bookworm InRelease
+Get:6 http://archive.raspberrypi.com/debian bookworm InRelease [54.9 kB]
+Get:7 http://deb.debian.org/debian-security bookworm-security/main armhf Packages [266 kB]
+Get:8 http://deb.debian.org/debian-security bookworm-security/main arm64 Packages [281 kB]
+Get:9 http://deb.debian.org/debian-security bookworm-security/main Translation-en [173 kB]
+Get:10 https://download.docker.com/linux/debian bookworm/stable arm64 Packages [52.2 kB]
+Get:11 http://archive.raspberrypi.com/debian bookworm/main arm64 Packages [559 kB]
+Get:12 http://archive.raspberrypi.com/debian bookworm/main armhf Packages [560 kB]
+Fetched 2,104 kB in 2s (958 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+2 packages can be upgraded. Run 'apt list --upgradable' to see them.
+N: Repository 'http://archive.raspberrypi.com/debian bookworm InRelease' changed its 'Suite' value from 'stable' to 'oldstable'
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+tor is already the newest version (0.4.7.16-1).
+python3-pip is already the newest version (23.0.1+dfsg-1+rpt1).
+python3-venv is already the newest version (3.11.2-1+b1).
+The following packages were automatically installed and are no longer required:
+  libslirp0 netcat-openbsd slirp4netns
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  nginx-common
+Suggested packages:
+  fcgiwrap nginx-doc
+The following NEW packages will be installed:
+  nginx nginx-common
+0 upgraded, 2 newly installed, 0 to remove and 2 not upgraded.
+Need to get 607 kB of archives.
+After this operation, 1,708 kB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian bookworm/main arm64 nginx-common all 1.22.1-9+deb12u3 [112 kB]
+Get:2 http://deb.debian.org/debian bookworm/main arm64 nginx arm64 1.22.1-9+deb12u3 [494 kB]
+Fetched 607 kB in 0s (3,442 kB/s)
+Preconfiguring packages ...
+Selecting previously unselected package nginx-common.
+(Reading database ... 160148 files and directories currently installed.)
+Preparing to unpack .../nginx-common_1.22.1-9+deb12u3_all.deb ...
+Unpacking nginx-common (1.22.1-9+deb12u3) ...
+Selecting previously unselected package nginx.
+Preparing to unpack .../nginx_1.22.1-9+deb12u3_arm64.deb ...
+Unpacking nginx (1.22.1-9+deb12u3) ...
+Setting up nginx-common (1.22.1-9+deb12u3) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/nginx.service → /lib/systemd/system/nginx.service.
+Setting up nginx (1.22.1-9+deb12u3) ...
+Upgrading binary: nginx.
+Processing triggers for man-db (2.11.2-2) ...
+Processing triggers for ufw (0.36.2-1) ...
+Scanning processes...
+Scanning processor microcode...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+The processor microcode seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+jdd@raspberrypitailnet:~ $ mkdir -p ~/hybrid_api
+cd ~/hybrid_api
+python3 -m venv venv
+source venv/bin/activate
+pip install fastapi uvicorn
+Looking in indexes: https://pypi.org/simple, https://www.piwheels.org/simple
+Collecting fastapi
+  Downloading https://www.piwheels.org/simple/fastapi/fastapi-0.121.1-py3-none-any.whl (109 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 109.2/109.2 kB 460.9 kB/s eta 0:00:00
+Collecting uvicorn
+  Downloading https://www.piwheels.org/simple/uvicorn/uvicorn-0.38.0-py3-none-any.whl (68 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 68.1/68.1 kB 4.0 MB/s eta 0:00:00
+Collecting starlette<0.50.0,>=0.40.0
+  Downloading https://www.piwheels.org/simple/starlette/starlette-0.49.3-py3-none-any.whl (74 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 74.3/74.3 kB 626.8 kB/s eta 0:00:00
+Collecting pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4
+  Downloading https://www.piwheels.org/simple/pydantic/pydantic-2.12.4-py3-none-any.whl (463 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 463.4/463.4 kB 743.6 kB/s eta 0:00:00
+Collecting typing-extensions>=4.8.0
+  Using cached https://www.piwheels.org/simple/typing-extensions/typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Collecting annotated-doc>=0.0.2
+  Downloading https://www.piwheels.org/simple/annotated-doc/annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+Collecting click>=7.0
+  Downloading https://www.piwheels.org/simple/click/click-8.3.0-py3-none-any.whl (107 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 107.3/107.3 kB 2.2 MB/s eta 0:00:00
+Collecting h11>=0.8
+  Using cached https://www.piwheels.org/simple/h11/h11-0.16.0-py3-none-any.whl (37 kB)
+Collecting annotated-types>=0.6.0
+  Downloading https://www.piwheels.org/simple/annotated-types/annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Collecting pydantic-core==2.41.5
+  Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (1.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.9/1.9 MB 4.2 MB/s eta 0:00:00
+Collecting typing-inspection>=0.4.2
+  Downloading https://www.piwheels.org/simple/typing-inspection/typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+Collecting anyio<5,>=3.6.2
+  Using cached https://www.piwheels.org/simple/anyio/anyio-4.11.0-py3-none-any.whl (109 kB)
+Collecting idna>=2.8
+  Downloading https://www.piwheels.org/simple/idna/idna-3.11-py3-none-any.whl (71 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 71.0/71.0 kB 541.1 kB/s eta 0:00:00
+Collecting sniffio>=1.1
+  Using cached https://www.piwheels.org/simple/sniffio/sniffio-1.3.1-py3-none-any.whl (10 kB)
+Installing collected packages: typing-extensions, sniffio, idna, h11, click, annotated-types, annotated-doc, uvicorn, typing-inspection, pydantic-core, anyio, starlette, pydantic, fastapi
+Successfully installed annotated-doc-0.0.4 annotated-types-0.7.0 anyio-4.11.0 click-8.3.0 fastapi-0.121.1 h11-0.16.0 idna-3.11 pydantic-2.12.4 pydantic-core-2.41.5 sniffio-1.3.1 starlette-0.49.3 typing-extensions-4.15.0 typing-inspection-0.4.2 uvicorn-0.38.0
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ cat << 'EOF' > ~/hybrid_api/main.py
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def root():
+    return {"status": "online", "service": "hybrid onion test"}
+EOF
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ ls -l ~/hybrid_api
+total 8
+-rw-r--r-- 1 jdd jdd  136 Nov 12 23:15 main.py
+drwxr-xr-x 5 jdd jdd 4096 Nov 12 23:15 venv
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ sudo bash -c 'cat << EOF > /etc/systemd/system/hybrid-api.service
+[Unit]
+Description=Hybrid API Service
+After=network.target
+
+[Service]
+User=jdd
+WorkingDirectory=/home/jdd/hybrid_api
+ExecStart=/home/jdd/hybrid_api/venv/bin/uvicorn main:app --host 127.0.0.1 --port 5001
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF'
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ sudo systemctl daemon-reload
+sudo systemctl enable hybrid-api
+sudo systemctl start hybrid-api
+Created symlink /etc/systemd/system/multi-user.target.wants/hybrid-api.service → /etc/systemd/system/hybrid-api.service.
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ sudo systemctl status hybrid-api
+● hybrid-api.service - Hybrid API Service
+     Loaded: loaded (/etc/systemd/system/hybrid-api.service; enabled; preset>
+     Active: active (running) since Wed 2025-11-12 23:17:52 CST; 5s ago
+   Main PID: 3243855 (uvicorn)
+      Tasks: 1 (limit: 8748)
+        CPU: 1.246s
+     CGroup: /system.slice/hybrid-api.service
+             └─3243855 /home/jdd/hybrid_api/venv/bin/python3 /home/jdd/hybri>
+
+Nov 12 23:17:52 raspberrypitailnet systemd[1]: Started hybrid-api.service - >
+Nov 12 23:17:54 raspberrypitailnet uvicorn[3243855]: INFO:     Started serve>
+Nov 12 23:17:54 raspberrypitailnet uvicorn[3243855]: INFO:     Waiting for a>
+Nov 12 23:17:54 raspberrypitailnet uvicorn[3243855]: INFO:     Application s>
+Nov 12 23:17:54 raspberrypitailnet uvicorn[3243855]: INFO:     Uvicorn runni>
+(venv) jdd@raspberrypitailnet:~/hybrid_api $
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ sudo mkdir -p /var/www/hybrid
+sudo bash -c 'cat << EOF > /var/www/hybrid/insudo mkdir -p /var/www/hybrid
+sudo bash -c 'cat << EOF > /var/www/hybrid/index.html
+<html>d><title>Hybrid .onion Test</title></head>
+  <head><title>Hybrid .onion Test</title></head>
+  <body>Hybrid Tor/Clearnet Test Page</h1>
+    <h1>Hybrid Tor/Clearnet Test Page</h1>is working.</p>
+    <p>Your Raspberry Pi hybrid test site is working.</p>
+    <h2>Your Onion Links</h2>
+    <h2>Your Onion Links</h2>
+    <ul>i>(placeholder for future onion site #1)</li>
+      <li>(placeholder for future onion site #1)</li>
+      <li>(placeholder for future onion site #2)</li>
+      <li>(placeholder for future onion site #3)</li>
+    </ul>
+    <h2>API Test</h2>
+    <h2>API Test</h2>o: <code>/api/</code></p>
+    <p>Try browsing to: <code>/api/</code></p>
+  </body>
+</html>
+EOF'
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ sudo bash -c 'cat << EOF > /etc/nginx/sites-available/hybrid
+server {
+    listen 80;
+    server_name _;
+
+    root /var/www/hybrid;
+    index index.html;
+
+    location /api/ {
+        proxy_pass http://127.0.0.1:5001/;
+    }
+}
+EOF'
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ sudo ln -s /etc/nginx/sites-available/hybrid /etc/nginx/sites-enabled/
+le /etc/nginx/nginx.conf syntax is ok
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ curl http://127.0.0.1:5001
+{"status":"online","service":"hybrid onion test"}(venv) jdd@raspberrypitailnet:~/hybrid_api $ curl http://127.0.0.1                                     curl http://127.0.0.1
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ sudo bash -c 'cat << EOF > /etc/nginx/sites-available/hybrid
+server {
+    listen 80;
+    server_name _;
+
+    root /var/www/hybrid;
+    index index.html;
+
+    location /api/ {
+        proxy_pass http://127.0.0.1:5001/;
+    }
+}
+EOF'
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ sudo mkdir -p /var/www/hybrid
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ sudo mkdir -p /var/www/hybrid
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ sudo bash -c 'cat << EOF > /var/www/hybrid/index.html
+<html>
+<head><title>Hybrid Test</title></head>
+<body>
+<h1>Hybrid Tor/Clearnet Test Page</h1>
+<p>If you see this page, NGINX is pointing to the correct directory.</p>
+<p>API test: <a href="/api/">/api/</a></p>
+</body>
+</html>
+EOF'
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ sudo rm -f /etc/nginx/sites-enabled/default
+sudo ln -sf /etc/nginx/sites-available/hybrid /etc/nginx/sites-enabled/hybrid
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ sudo nginx -t
+sudo systemctl restart nginx
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ curl http://127.0.0.1
+<html>
+<head><title>Hybrid Test</title></head>
+<body>
+<h1>Hybrid Tor/Clearnet Test Page</h1>
+<p>If you see this page, NGINX is pointing to the correct directory.</p>
+<p>API test: <a href="/api/">/api/</a></p>
+</body>
+</html>
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ sudo bash -c 'cat << EOF >> /etc/tor/torrc
+
+# Hybrid Hidden Service
+HiddenServiceDir /var/lib/tor/hybrid/
+HiddenServicePort 80 127.0.0.1:5001
+EOF'
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ sudo systemctl restart tor
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ sudo cat /var/lib/tor/hybrid/hostname
+wmwejh36zcvsgmesq34nwdcmvef3rxfskfbw62sz4ppg3feb23moofad.onion
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ sudo sed -i 's/127.0.0.1:5001/127.0.0.1:80/' /etc/tor/torrc
+sudo systemctl restart tor
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ sudo mkdir -p /var/www/hybrid/files
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ echo "This is a test file served from Tor." | sudo tee /var/www/hybrid/files/testfile.txt
+This is a test file served from Tor.
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ sudo bash -c 'cat << EOF > /var/www/hybrid/index.html
+<html>
+<head><title>Hybrid Test</title></head>
+<body>
+<h1>Hybrid Tor/Clearnet Test Page</h1>
+<p>Your .onion site now serves HTML instead of API JSON.</p>
+
+<h2>Downloads</h2>
+<ul>
+  <li><a href="/files/testfile.txt" download>Download Test File</a></li>
+</ul>
+
+<h2>API Test</h2>
+<p><a href="/api/">Visit /api/</a></p>
+</body>
+</html>
+EOF'
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ sudo systemctl restart nginx
+(venv) jdd@raspberrypitailnet:~/hybrid_api $ curl http://127.0.0.1
+<html>
+<head><title>Hybrid Test</title></head>
+<body>
+<h1>Hybrid Tor/Clearnet Test Page</h1>
+<p>Your .onion site now serves HTML instead of API JSON.</p>
+
+<h2>Downloads</h2>
+<ul>
+  <li><a href="/files/testfile.txt" download>Download Test File</a></li>
+</ul>
+
+<h2>API Test</h2>
+<p><a href="/api/">Visit /api/</a></p>
+</body>
+</html>

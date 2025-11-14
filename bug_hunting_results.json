@@ -1,0 +1,24 @@
+[
+  {
+    "url": "http://testphp.vulnweb.com/search.php?test=query",
+    "method": "POST",
+    "parameter": "searchFor",
+    "payload": "' OR '1'='1' --",
+    "vulnerability_type": "sqli",
+    "confidence": "high",
+    "evidence": "SQL error in response",
+    "response_status": 200,
+    "response_length": 2250
+  },
+  {
+    "url": "http://testphp.vulnweb.com/search.php?test=query",
+    "method": "POST",
+    "parameter": "searchFor",
+    "payload": "<script>alert('XSS')</script>",
+    "vulnerability_type": "xss",
+    "confidence": "high",
+    "evidence": "XSS payload reflected in response",
+    "response_status": 200,
+    "response_length": 2318
+  }
+]

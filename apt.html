@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dondlinger GC · Tome of APT Pipelines</title>
+    <style>
+        :root {
+            --shadow: #2d1b69;
+            --deep-purple: #1a0b2e;
+            --gold: #ffd700;
+            --silver: #c0c0c0;
+            --emerald: #50c878;
+            --ruby: #9b111e;
+            --sapphire: #0f52ba;
+            --amethyst: #9966cc;
+            --onyx: #0f0f0f;
+            --mist: rgba(255, 215, 0, 0.1);
+            --glow: rgba(255, 215, 0, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Cinzel', 'Times New Roman', serif;
+            background: radial-gradient(circle at center, var(--deep-purple), var(--onyx));
+            color: var(--silver);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .portal-shell {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero-portal {
+            background: linear-gradient(135deg, var(--shadow), var(--deep-purple));
+            border: 3px solid var(--gold);
+            border-radius: 50px;
+            padding: 40px;
+            box-shadow: 0 0 50px var(--glow);
+            position: relative;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-portal h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin: 0 0 20px;
+            color: var(--gold);
+            text-shadow: 0 0 20px var(--gold);
+        }
+
+        .hero-portal p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 0;
+            color: var(--silver);
+        }
+
+        .tome-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .tome-card {
+            background: linear-gradient(135deg, rgba(26, 11, 46, 0.9), rgba(45, 27, 105, 0.8));
+            border: 2px solid var(--amethyst);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .tome-card h3 {
+            margin-top: 0;
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        .tome-card p {
+            margin-bottom: 20px;
+            color: var(--silver);
+            line-height: 1.5;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--gold);
+        }
+
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--amethyst);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--silver);
+        }
+
+        .module-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .module-item {
+            background: var(--emerald);
+            color: var(--onyx);
+            padding: 5px 10px;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        .module-item:hover {
+            background: var(--gold);
+        }
+
+        .tome-btn {
+            display: inline-block;
+            background: var(--emerald);
+            color: var(--onyx);
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            box-shadow: 0 5px 15px rgba(80, 200, 120, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .tome-btn:hover {
+            background: var(--gold);
+            color: var(--deep-purple);
+        }
+
+        .output {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="portal-shell">
+        <header class="hero-portal">
+            <h1>📜 Tome of APT Pipelines</h1>
+            <p>
+                Behold the ancient scrolls of pure logic. Weave destinies in algebraic chains,
+                where each module whispers secrets of deterministic fate.
+            </p>
+        </header>
+
+        <section class="tome-grid">
+            <article class="tome-card">
+                <h3>Pipeline Weaver</h3>
+                <p>Add modules to your pipeline and generate the code.</p>
+                <div class="input-group">
+                    <label for="pipeline-name">Pipeline Name:</label>
+                    <input type="text" id="pipeline-name" placeholder="my_pipeline">
+                </div>
+                <div class="input-group">
+                    <label>Modules:</label>
+                    <div class="module-list" id="module-list">
+                        <div class="module-item" onclick="addModule('m1_base64_encode')">m1_base64_encode</div>
+                        <div class="module-item" onclick="addModule('m2_build_payload')">m2_build_payload</div>
+                        <div class="module-item" onclick="addModule('m3_process')">m3_process</div>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="selected-modules">Selected Modules:</label>
+                    <textarea id="selected-modules" rows="3" readonly></textarea>
+                </div>
+                <button class="tome-btn" onclick="generatePipeline()">Weave Pipeline</button>
+            </article>
+
+            <article class="tome-card">
+                <h3>Generated Artifacts</h3>
+                <p>The algebraic equation and code manifest below.</p>
+                <div class="output" id="output">Awaiting your weave...</div>
+                <button class="tome-btn" onclick="copyOutput()">Copy to Clipboard</button>
+            </article>
+        </section>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-link">← Return to the Portal</a>
+        </div>
+    </div>
+
+    <script>
+        let modules = [];
+
+        function addModule(name) {
+            if (!modules.includes(name)) {
+                modules.push(name);
+                updateSelected();
+            }
+        }
+
+        function updateSelected() {
+            document.getElementById('selected-modules').value = modules.join(' → ');
+        }
+
+        function generatePipeline() {
+            const name = document.getElementById('pipeline-name').value || 'pipeline';
+            const equation = `y_final = ${modules.join('(')}${modules.length ? '(' : ''}x_initial${')'.repeat(modules.length)}`;
+            const yaml = `- name: ${name}\n  modules: [${modules.map(m => `"${m}"`).join(', ')}]`;
+            const python = `def ${name}(x):\n    ${modules.map((m, i) => `    y${i + 1} = ${m}(y${i} if ${i} else 'x')`).join('\n')}\n    return y${modules.length}`;
+            document.getElementById('output').textContent = `Equation: ${equation}\n\nYAML:\n${yaml}\n\nPython:\n${python}`;
+        }
+
+        function copyOutput() {
+            const output = document.getElementById('output').textContent;
+            navigator.clipboard.writeText(output);
+            alert('Copied!');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dondlinger GC · Hidden Realms</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --accent: #007bff;
+            --text: #333333;
+            --card: #f8f9fa;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .portal-shell {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero-portal {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: var(--card);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+
+        .hero-portal h1 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .hero-portal p {
+            margin: 0;
+        }
+
+        .vault-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .portal-card {
+            background: var(--card);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px var(--shadow);
+            transition: transform 0.2s;
+            text-align: center;
+        }
+
+        .portal-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .portal-card h3 {
+            margin-top: 0;
+            color: var(--accent);
+        }
+
+        .portal-card p {
+            margin-bottom: 20px;
+        }
+
+        .portal-link {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        .portal-link:hover {
+            background: #0056b3;
+        }
+
+        .vault-footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #666;
+        }
+
+        .vault-footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .vault-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .onion-list {
+            background: var(--card);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+
+        .onion-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .onion-title {
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .onion-desc {
+            margin-top: 5px;
+            font-size: 0.9rem;
+        }
+    </style>
+
+    .hero-portal h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin: 0 0 20px;
+    color: var(--gold);
+    text-shadow: 0 0 20px var(--gold);
+    }
+
+    .hero-portal p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin: 0;
+    color: var(--silver);
+    }
+
+    .realm-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    }
+
+    .realm-card {
+    background: linear-gradient(135deg, rgba(26, 11, 46, 0.9), rgba(45, 27, 105, 0.8));
+    border: 2px solid var(--amethyst);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    }
+
+    .realm-card h3 {
+    margin-top: 0;
+    color: var(--gold);
+    font-size: 1.5rem;
+    }
+
+    .realm-card p {
+    margin-bottom: 20px;
+    color: var(--silver);
+    line-height: 1.5;
+    }
+
+    .realm-link {
+    display: inline-block;
+    background: var(--emerald);
+    color: var(--onyx);
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    box-shadow: 0 5px 15px rgba(80, 200, 120, 0.3);
+    }
+
+    .realm-link:hover {
+    background: var(--gold);
+    color: var(--deep-purple);
+    }
+
+    .back-link {
+    display: inline-block;
+    margin-top: 30px;
+    color: var(--gold);
+    text-decoration: none;
+    }
+
+    .back-link:hover {
+    text-decoration: underline;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="portal-shell">
+        <header class="hero-portal">
+            <h1>🌐 Hidden Realms</h1>
+            <p>
+                Venture beyond the veil into realms unseen. Where decentralized spirits roam free,
+                and anonymity is the crown of the enlightened.
+            </p>
+        </header>
+
+        <section class="realm-grid">
+            <article class="realm-card">
+                <h3>🕵️ Shadow Archive</h3>
+                <p>
+                    A clandestine repository of forbidden knowledge, accessible only through the darkest channels.
+                </p>
+                <a href="http://cwzbr4b4pwvsmzkqethbpddk3tnzojy2m6gt2xjoz522k3qjyyvqloqd.onion" class="realm-link"
+                    target="_blank">Chat Service</a>
+            </article>
+
+            <article class="realm-card">
+                <h3>🔐 Cryptic Vault</h3>
+                <p>
+                    Guarded by enigmas and ciphers, this vault holds the keys to untold mysteries.
+                </p>
+                <a href="http://q3wq6eoehgbusayj4spargrgxo2zdz2kgjvr2owmxou6p7xhnk4wcmad.onion" class="realm-link"
+                    target="_blank">Llama API</a>
+            </article>
+
+            <article class="realm-card">
+                <h3>🌑 Void Nexus</h3>
+                <p>
+                    The heart of nothingness, where all paths converge in silent communion.
+                </p>
+                <a href="http://5q4m6ejy7237m4cimsxagpyfbk4nhc6n5ipeehsaklb7mhalifp3myd.onion" class="realm-link"
+                    target="_blank">Mitmproxy</a>
+            </article>
+
+            <article class="realm-card">
+                <h3>✨ Ether Forge</h3>
+                <p>
+                    Where digital essences are shaped and spirits are bound to code.
+                </p>
+                <a href="http://wmwejh36zcvsgmesq34nwdcmvef3rxfskfbw62sz4ppg3feb23moofad.onion" class="realm-link"
+                    target="_blank">Hybrid API</a>
+            </article>
+        </section>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-link">← Return to the Portal</a>
+        </div>
+    </div>
+</body>
+
+</html>
