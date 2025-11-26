@@ -1,0 +1,6 @@
+timestamp,ip,method,path,status,user_agent
+2025-11-13 10:00:00,192.168.1.100,GET,/index.html,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+2025-11-13 10:05:00,192.168.1.101,POST,/api/chat,200,Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
+2025-11-13 10:10:00,192.168.1.102,GET,/logs.html,200,Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36
+2025-11-13 10:15:00,192.168.1.103,GET,/messages.html,200,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+2025-11-13 10:20:00,192.168.1.104,GET,/hidden.html,200,Tor Browser/11.5.1

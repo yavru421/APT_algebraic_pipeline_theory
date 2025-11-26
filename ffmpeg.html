@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dondlinger GC · Forge of FFmpeg</title>
+    <style>
+        :root {
+            --shadow: #2d1b69;
+            --deep-purple: #1a0b2e;
+            --gold: #ffd700;
+            --silver: #c0c0c0;
+            --emerald: #50c878;
+            --ruby: #9b111e;
+            --sapphire: #0f52ba;
+            --amethyst: #9966cc;
+            --onyx: #0f0f0f;
+            --mist: rgba(255, 215, 0, 0.1);
+            --glow: rgba(255, 215, 0, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Cinzel', 'Times New Roman', serif;
+            background: radial-gradient(circle at center, var(--deep-purple), var(--onyx));
+            color: var(--silver);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .portal-shell {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero-portal {
+            background: linear-gradient(135deg, var(--shadow), var(--deep-purple));
+            border: 3px solid var(--gold);
+            border-radius: 50px;
+            padding: 40px;
+            box-shadow: 0 0 50px var(--glow);
+            position: relative;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-portal h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin: 0 0 20px;
+            color: var(--gold);
+            text-shadow: 0 0 20px var(--gold);
+        }
+
+        .hero-portal p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 0;
+            color: var(--silver);
+        }
+
+        .forge-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .forge-card {
+            background: linear-gradient(135deg, rgba(26, 11, 46, 0.9), rgba(45, 27, 105, 0.8));
+            border: 2px solid var(--amethyst);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .forge-card h3 {
+            margin-top: 0;
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        .forge-card p {
+            margin-bottom: 20px;
+            color: var(--silver);
+            line-height: 1.5;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--gold);
+        }
+
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--amethyst);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--silver);
+        }
+
+        .forge-btn {
+            display: inline-block;
+            background: var(--emerald);
+            color: var(--onyx);
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            box-shadow: 0 5px 15px rgba(80, 200, 120, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .forge-btn:hover {
+            background: var(--gold);
+            color: var(--deep-purple);
+        }
+
+        .output {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="portal-shell">
+        <header class="hero-portal">
+            <h1>⚔️ Forge of FFmpeg</h1>
+            <p>
+                Unleash the primal forces of transmutation. Bend time and essence through forbidden runes.
+                Dare to command the forge where shadows dance and echoes scream.
+            </p>
+        </header>
+
+        <section class="forge-grid">
+            <article class="forge-card">
+                <h3>Custom Command</h3>
+                <p>Enter your own FFmpeg incantation.</p>
+                <div class="input-group">
+                    <label for="custom-cmd">Command:</label>
+                    <input type="text" id="custom-cmd" placeholder="ffmpeg -i input.mp4 -vf scale=640:480 output.mp4">
+                </div>
+                <button class="forge-btn" onclick="generateCustom()">Forge Command</button>
+            </article>
+
+            <article class="forge-card">
+                <h3>Preset Spells</h3>
+                <p>Select a preset to conjure the command.</p>
+                <div class="input-group">
+                    <label for="preset">Preset:</label>
+                    <select id="preset">
+                        <option value="">Choose a preset...</option>
+                        <option value="compress">Compress Video</option>
+                        <option value="convert">Convert Format</option>
+                        <option value="resize">Resize Video</option>
+                        <option value="extract">Extract Audio</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="input-file">Input File:</label>
+                    <input type="text" id="input-file" placeholder="input.mp4">
+                </div>
+                <div class="input-group">
+                    <label for="output-file">Output File:</label>
+                    <input type="text" id="output-file" placeholder="output.mp4">
+                </div>
+                <button class="forge-btn" onclick="generatePreset()">Cast Preset</button>
+            </article>
+
+            <article class="forge-card">
+                <h3>Generated Command</h3>
+                <p>The forged incantation appears below.</p>
+                <div class="output" id="output">Awaiting your command...</div>
+                <button class="forge-btn" onclick="copyCommand()">Copy to Clipboard</button>
+            </article>
+        </section>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-link">← Return to the Portal</a>
+        </div>
+    </div>
+
+    <script>
+        function generateCustom() {
+            const cmd = document.getElementById('custom-cmd').value;
+            document.getElementById('output').textContent = cmd || 'No command entered.';
+        }
+
+        function generatePreset() {
+            const preset = document.getElementById('preset').value;
+            const input = document.getElementById('input-file').value;
+            const output = document.getElementById('output-file').value;
+            let cmd = '';
+            if (preset === 'compress') {
+                cmd = `ffmpeg -i ${input} -vf scale=640:480 -b:v 1M -b:a 128k ${output}`;
+            } else if (preset === 'convert') {
+                cmd = `ffmpeg -i ${input} ${output}`;
+            } else if (preset === 'resize') {
+                cmd = `ffmpeg -i ${input} -vf scale=1280:720 ${output}`;
+            } else if (preset === 'extract') {
+                cmd = `ffmpeg -i ${input} -vn -acodec copy ${output.replace('.mp4', '.mp3')}`;
+            }
+            document.getElementById('output').textContent = cmd || 'Select a preset and provide files.';
+        }
+
+        function copyCommand() {
+            const output = document.getElementById('output').textContent;
+            navigator.clipboard.writeText(output);
+            alert('Command copied!');
+        }
+    </script>
+</body>
+
+</html>

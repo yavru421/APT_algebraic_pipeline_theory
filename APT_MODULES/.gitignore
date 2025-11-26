@@ -2,3 +2,8 @@
 *
 # Except this file
 !.gitignore
+# Allow InventoryAI modules
+!m1_inventory_scanner.py
+!m2_inventory_classifier.py
+!m3_inventory_storage.py
+!m4_inventory_reporter.py

@@ -1,0 +1,19 @@
+{
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": "../audio"
+        },
+        {
+            "path": "../llamagent/llamamachinery-main/llamamachinery-main"
+        },
+        {
+            "path": "../cottonthimble"
+        }
+    ],
+    "settings": {
+        "powershell.cwd": "cottonthimble"
+    }
+}

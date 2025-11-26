@@ -1,0 +1,54 @@
+# APT Algebraic Pipeline - InventoryAI
+# Algebraic Equation: Y = m4(m3(m2(m1(X))))
+# Where:
+#   X = raw inventory data (file or directory)
+#   y1 = m1(X) = scanned items
+#   y2 = m2(y1) = classified items
+#   y3 = m3(y2) = storage result
+#   Y = m4(y3, y2) = final report
+
+# Success Criteria:
+#   - All items scanned and indexed
+#   - Classification applied with category, priority, status
+#   - Data stored with checksum verification
+#   - Report generated with recommendations
+#   - Fatal errors halt execution (no graceful failures)
+
+pipeline:
+  - name: m1_scanner
+    module: APT_MODULES.m1_inventory_scanner
+    fn: run
+    args:
+      inventory_path: APT_INPUTS/inventory_data.json
+      scan_type: file
+
+  - name: m2_classifier
+    module: APT_MODULES.m2_inventory_classifier
+    fn: run
+    args:
+      scanned_items: $m1_scanner
+      classification_rules:
+        default_category: General
+        category_patterns:
+          widget: Electronics
+          tool: Hardware
+          part: Components
+          material: RawMaterials
+        low_stock_threshold: 20
+        medium_stock_threshold: 50
+
+  - name: m3_storage
+    module: APT_MODULES.m3_inventory_storage
+    fn: run
+    args:
+      classified_items: $m2_classifier
+      storage_path: APT_PIPELINE_RUNS/inventory_output.json
+      storage_format: json
+
+  - name: m4_reporter
+    module: APT_MODULES.m4_inventory_reporter
+    fn: run
+    args:
+      storage_result: $m3_storage
+      classified_items: $m2_classifier
+      report_format: alerts

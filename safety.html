@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dondlinger GC · Scrying Mirror</title>
+    <style>
+        :root {
+            --shadow: #2d1b69;
+            --deep-purple: #1a0b2e;
+            --gold: #ffd700;
+            --silver: #c0c0c0;
+            --emerald: #50c878;
+            --ruby: #9b111e;
+            --sapphire: #0f52ba;
+            --amethyst: #9966cc;
+            --onyx: #0f0f0f;
+            --mist: rgba(255, 215, 0, 0.1);
+            --glow: rgba(255, 215, 0, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Cinzel', 'Times New Roman', serif;
+            background: radial-gradient(circle at center, var(--deep-purple), var(--onyx));
+            color: var(--silver);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .portal-shell {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero-portal {
+            background: linear-gradient(135deg, var(--shadow), var(--deep-purple));
+            border: 3px solid var(--gold);
+            border-radius: 50px;
+            padding: 40px;
+            box-shadow: 0 0 50px var(--glow);
+            position: relative;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-portal h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin: 0 0 20px;
+            color: var(--gold);
+            text-shadow: 0 0 20px var(--gold);
+        }
+
+        .hero-portal p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 0;
+            color: var(--silver);
+        }
+
+        .mirror-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .mirror-card {
+            background: linear-gradient(135deg, rgba(26, 11, 46, 0.9), rgba(45, 27, 105, 0.8));
+            border: 2px solid var(--amethyst);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .mirror-card h3 {
+            margin-top: 0;
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        .mirror-card p {
+            margin-bottom: 20px;
+            color: var(--silver);
+            line-height: 1.5;
+        }
+
+        .mirror-btn {
+            display: inline-block;
+            background: var(--emerald);
+            color: var(--onyx);
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            box-shadow: 0 5px 15px rgba(80, 200, 120, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .mirror-btn:hover {
+            background: var(--gold);
+            color: var(--deep-purple);
+        }
+
+        .output {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="portal-shell">
+        <header class="hero-portal">
+            <h1>🔮 Scrying Mirror</h1>
+            <p>
+                Gaze into the abyss of the unseen. Unveil the hidden truths that lurk in the ether,
+                where browsers betray their deepest secrets to the watchful eye.
+            </p>
+        </header>
+
+        <section class="mirror-grid">
+            <article class="mirror-card">
+                <h3>Reveal Client Secrets</h3>
+                <p>Invoke the mirror to expose the metadata of your browser's essence.</p>
+                <button class="mirror-btn" onclick="revealMetadata()">Scry the Mirror</button>
+            </article>
+
+            <article class="mirror-card">
+                <h3>Revealed Truths</h3>
+                <p>The mirror's gaze pierces the veil, showing what lies beneath.</p>
+                <div class="output" id="output">The mirror awaits your gaze...</div>
+                <button class="mirror-btn" onclick="copyOutput()">Copy Revelations</button>
+            </article>
+        </section>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-link">← Return to the Portal</a>
+        </div>
+    </div>
+
+    <script>
+        function revealMetadata() {
+            const metadata = {
+                userAgent: navigator.userAgent,
+                language: navigator.language,
+                platform: navigator.platform,
+                cookieEnabled: navigator.cookieEnabled,
+                screenWidth: screen.width,
+                screenHeight: screen.height,
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                referrer: document.referrer,
+                url: window.location.href
+            };
+            document.getElementById('output').textContent = JSON.stringify(metadata, null, 2);
+        }
+
+        function copyOutput() {
+            const output = document.getElementById('output').textContent;
+            navigator.clipboard.writeText(output);
+            alert('Revelations copied!');
+        }
+    </script>
+</body>
+
+</html>

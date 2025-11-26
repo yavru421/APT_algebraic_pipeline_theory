@@ -1,0 +1,89 @@
+{
+  "metadata": {
+    "source": "InventoryAI Demo Dataset",
+    "generated": "2025-11-14",
+    "description": "Sample inventory data for InventoryAI pipeline testing"
+  },
+  "items": [
+    {
+      "id": 1,
+      "name": "Widget Pro X1",
+      "quantity": 150,
+      "location": "Warehouse A",
+      "sku": "WDG-PRO-X1",
+      "unit_cost": 25.99
+    },
+    {
+      "id": 2,
+      "name": "Widget Standard S2",
+      "quantity": 75,
+      "location": "Warehouse B",
+      "sku": "WDG-STD-S2",
+      "unit_cost": 15.49
+    },
+    {
+      "id": 3,
+      "name": "Tool Kit Advanced",
+      "quantity": 12,
+      "location": "Warehouse A",
+      "sku": "TL-KIT-ADV",
+      "unit_cost": 89.99
+    },
+    {
+      "id": 4,
+      "name": "Tool Basic Hammer",
+      "quantity": 5,
+      "location": "Warehouse C",
+      "sku": "TL-HAM-BAS",
+      "unit_cost": 12.99
+    },
+    {
+      "id": 5,
+      "name": "Part Assembly A1",
+      "quantity": 0,
+      "location": "Warehouse B",
+      "sku": "PRT-ASM-A1",
+      "unit_cost": 45.00
+    },
+    {
+      "id": 6,
+      "name": "Part Component B2",
+      "quantity": 8,
+      "location": "Warehouse A",
+      "sku": "PRT-CMP-B2",
+      "unit_cost": 8.50
+    },
+    {
+      "id": 7,
+      "name": "Material Raw Steel",
+      "quantity": 200,
+      "location": "Warehouse D",
+      "sku": "MAT-STL-RAW",
+      "unit_cost": 3.25
+    },
+    {
+      "id": 8,
+      "name": "Widget Deluxe D3",
+      "quantity": 0,
+      "location": "Warehouse A",
+      "sku": "WDG-DLX-D3",
+      "unit_cost": 35.99
+    },
+    {
+      "id": 9,
+      "name": "Tool Screwdriver Set",
+      "quantity": 18,
+      "location": "Warehouse B",
+      "sku": "TL-SCR-SET",
+      "unit_cost": 22.50
+    },
+    {
+      "id": 10,
+      "name": "Part Fastener Pack",
+      "quantity": 250,
+      "location": "Warehouse C",
+      "sku": "PRT-FST-PCK",
+      "unit_cost": 1.99
+    }
+  ]
+}

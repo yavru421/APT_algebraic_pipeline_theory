@@ -1,81 +1,68 @@
-# Copilot Instructions for APT Algebraic Pipeline Theory Workspace (UPDATED)
+# Copilot Instructions for APT Algebraic Pipeline Theory Workspace
 
 ## Purpose
-This document prescribes how the automated coding assistant (Copilot) should behave when operating inside the APT (Algebraic Pipeline Theory) workspace. It enforces the APT Chat Mode constraints: pipelines must be expressed algebraically, modules indexed, inputs/outputs explicit, and all interactions traceable and reproducible.
+This document guides AI coding assistants in the APT (Algebraic Pipeline Theory) workspace. Enforce APT principles: pipelines as algebraic equations with indexed modules, explicit I/O, traceability, and reproducibility.
 
 ## Core Principles
-- Modular algebraic pipelines: represent every pipeline as a composition of indexed modules m1, m2, ..., mk, where each module mi has an explicit input tuple Xi and output Yi and a well-defined transformation fi: Yi = fi(Xi).
-- Explicit variable definitions: every symbol (xi, yi, parameters) must be defined before use. Use indexed notation (x1, x2, y1, y2) and snapshot outputs when useful.
-- Pipeline equation: represent the full pipeline as a single algebraic expression when possible, e.g. Y = mk(...m2(m1(X))). This equation plus the environment deterministically defines outputs.
-- Traceability and reproducibility: for every module execution record (mi, inputs, output, timestamp, environment) and store snapshots in `snapshot` utilities where applicable.
+- **Modular Pipelines**: Represent pipelines as compositions m_k(...m_2(m_1(X))), where each m_i has defined inputs X_i, outputs Y_i, and transformation f_i: Y_i = f_i(X_i).
+- **Explicit Variables**: Define all symbols (x_i, y_j) before use. Use indexed notation and snapshot outputs.
+- **Fatal Enforcement**: Exceptions are unrecoverable (⊥). No graceful failures; halt execution immediately with traceback.
+- **Traceability**: Record every execution (m_i, inputs, output, timestamp, env) using snapshot utilities.
 
-## Developer Workflows (enforced)
-- Execution: run pipeline entrypoints in `scripts/` or `apt_pipeline_pkg/pipeline.py`. When proposing or editing runnable code, include a minimal runner and usage example.
-- Testing: provide at least one unit test for new or modified modules (happy path + 1 edge case). Place tests under `tests/` or `scripts/tests/` and ensure they run with the repository's test runner.
-- Archival: store heavyweight outputs in `archive/` or `results/` (ignored by git). Provide helper functions to save and verify snapshots.
-- Documentation: update `docs/` and include algebraic equations describing module behavior and dependencies.
+## Developer Workflows
+- **Execution**: Run pipelines via APT_PIPELINE.yaml and apt_pipeline_pkg/executor.py. For testing, use test_pipeline.py or pytest.
+- **Testing**: Add unit tests for modules (happy path + edge case) in APT_MODULES/tests/. Run with pytest.
+- **Archival**: Store outputs in APT_PIPELINE_RUNS/ or archive/. Use snapshot.py for traces.
+- **Documentation**: Update docs/ with algebraic equations and module contracts.
 
-## Required Conventions (formatting & content)
-- Module naming and indexing: name modules with an index prefix where possible (e.g., `m1_base64_encode.py`) and document the mapping in module docstrings.
-- Function contracts: each module must declare its contract in 2–4 bullets: inputs (names/types), outputs (names/types), error modes, and success conditions.
-- Algebraic pipeline header: top-level pipeline files must include a short header showing the pipeline equation. Example:
+## Required Conventions
+- **Module Naming**: m{index}_{descriptive}.py (e.g., m1_base64_encode.py). Include contract in docstring.
+- **Contracts**: 2-4 bullets: Inputs (name:type), Outputs (name:type), Errors, Success criteria.
+- **Pipeline Headers**: Include equation like # y_final = m4(m3(m2(m1(x_image, x_prompt))))
+- **YAML DSL**: Use in APT_PIPELINE.yaml for module bindings, e.g., args: {image_b64: $m1}
+- **Logging**: Use apt_pipeline_pkg/snapshot.py and telemetry_mysql.py for traces.
 
-  # Pipeline equation
-  # y_final = m4(m3(m2(m1(x_image, x_meta), x_prompt), x_config))
+## APT Constraints
+- Present logic algebraically: y2 = m2(m1(x1)).
+- Provide execution contract: inputs, equation, success criteria.
+- No implicit assumptions; infer defaults or ask.
+- Trace changes: list affected (m_i, inputs, outputs).
+- Reproducibility: Specify env (Python version, packages from requirements.txt).
 
-- YAML DSL: When describing pipelines in metadata or configs, prefer a compact YAML DSL that binds inputs to module outputs. Example:
-
-  pipeline:
-    - name: m1
-      fn: base64_encode_image
-      inputs: { image: x1 }
-      output: y1
-    - name: m2
-      fn: build_payload
-      inputs: { image_b64: y1, prompt: x2 }
-      output: y2
-
-- Logging & telemetry: use `apt_pipeline_pkg/snapshot.py` and `telemetry_mysql.py` where available; otherwise add structured logs for each module step.
-
-## APT Chat Mode Constraints (for Copilot responses)
-- Always present pipeline logic using algebraic notation and explicit variable binders. Example: y2 = m2(m1(x1)).
-- Provide an execution contract before running or editing code: list required inputs, modules, pipeline equation, and success criteria.
-- No implicit assumptions: if a required variable or configuration is missing, either infer a single reasonable default and state it, or ask a clarifying question.
-- Trace each step: for any code change that modifies pipeline behavior, list (mi, inputs, outputs) for each affected module.
-- Reproducibility: Include required environment details (Python version and key packages) for runnable changes and add or update `requirements.txt` entries if adding dependencies.
-
-## Examples & Templates
-- Pipeline header example (place near top of pipeline files):
-
-  # Equation: y_final = m5(m4(m3(m2(m1(x_image, x_prompt), x_config))))
-  # Contract:
-  # - Inputs: x_image: bytes, x_prompt: str
-  # - Outputs: y_final: dict
-
-- Module docstring template:
-
-  """
-  m2_build_payload
-
+## Examples
+- **Module Contract** (from m1_base64_encode.py):
+  ```
   Contract:
-    Inputs: image_b64: str, prompt: str
-    Outputs: payload: dict
-    Errors: Raises ValueError for missing prompt, TypeError for invalid image
-  Algebraic: y2 = m2(x1 = y1, x2 = x_prompt)
-  """
-
-- YAML DSL snippet (as above) — use this for pipeline config files.
+    Inputs: image_path: str
+    Outputs: image_b64: str
+    Errors: FileNotFoundError
+  Algebraic: y1 = m1(x1)
+  ```
+- **Pipeline YAML** (from APT_PIPELINE.yaml):
+  ```
+  - name: m1
+    module: APT_MODULES.m1_base64_encode
+    fn: run
+    args: {image_path: demo_image.png}
+  - name: m2
+    module: APT_MODULES.m2_build_payload
+    fn: run
+    args: {image_b64: $m1, apt_prompt: "Describe"}
+  ```
 
 ## Key Files & Directories
-- `scripts/`, `apt_pipeline_pkg/`: pipeline logic and runners
-- `apt_pipeline_pkg/snapshot.py`: snapshot & trace utilities (use to record mi runs)
-- `docs/`: documentation and algebraic proofs
-- `archive/`, `results/`: binary or heavyweight outputs
+- `APT_MODULES/`: Pipeline modules (m1_*.py) and apt_pipeline_pkg/ (executor, snapshot).
+- `APT_PIPELINE.yaml`: Pipeline definition with equations.
+- `APT_PIPELINE_RUNS/`: Timestamped outputs.
+- `APT_INPUTS/`: Raw inputs.
+- `APT_ENV/venvs/`: Per-module environments.
+- `docs/`: Theory and proofs.
+- `archive/`: Heavyweight outputs.
+- `requirements.txt`: Dependencies (pyyaml, requests, sklearn, xgboost).
 
-## Small automation & safety notes
-- When editing repository files, ensure changes are small, documented, and include tests. Avoid large refactors without opening an issue first.
-- For any change that introduces external network calls or secrets handling, add clear comments about credentials and do not hardcode secrets.
+## Notes
+- Changes must be small, tested, documented. Use strict_mode.py for fatal errors.
+- For network/secrets: comment credentials, no hardcoding.
+- Follow APT_METHODS.md for advanced patterns (P vs NP pipelines, barriers).
 
----
-
-For new modules or changes: follow the algebraic documentation and modular structure, include a pipeline header and contract, add a unit test, and snapshot outputs for reproducibility.
+For new work: Use algebraic notation, add contracts/tests, snapshot outputs.

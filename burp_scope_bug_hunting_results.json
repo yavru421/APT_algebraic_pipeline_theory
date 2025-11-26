@@ -1,0 +1,90 @@
+[
+  {
+    "url": "https://www.booking.com/api/search",
+    "method": "GET",
+    "parameter": "destination",
+    "payload": "' OR '1'='1 --",
+    "vulnerability_type": "potential_error",
+    "confidence": "low",
+    "evidence": "HTTP 404",
+    "response_status": 404,
+    "scope_verified": true
+  },
+  {
+    "url": "https://www.booking.com/api/search",
+    "method": "GET",
+    "parameter": "checkin",
+    "payload": "' OR '1'='1 --",
+    "vulnerability_type": "potential_error",
+    "confidence": "low",
+    "evidence": "HTTP 404",
+    "response_status": 404,
+    "scope_verified": true
+  },
+  {
+    "url": "https://secure.booking.com/search",
+    "method": "GET",
+    "parameter": "query",
+    "payload": "' OR '1'='1 --",
+    "vulnerability_type": "potential_error",
+    "confidence": "low",
+    "evidence": "HTTP 404",
+    "response_status": 404,
+    "scope_verified": true
+  },
+  {
+    "url": "https://secure.booking.com/search",
+    "method": "GET",
+    "parameter": "checkin",
+    "payload": "' OR '1'='1 --",
+    "vulnerability_type": "potential_error",
+    "confidence": "low",
+    "evidence": "HTTP 404",
+    "response_status": 404,
+    "scope_verified": true
+  },
+  {
+    "url": "https://secure.booking.com/api/search",
+    "method": "GET",
+    "parameter": "destination",
+    "payload": "' OR '1'='1 --",
+    "vulnerability_type": "potential_error",
+    "confidence": "low",
+    "evidence": "HTTP 404",
+    "response_status": 404,
+    "scope_verified": true
+  },
+  {
+    "url": "https://secure.booking.com/api/search",
+    "method": "GET",
+    "parameter": "checkin",
+    "payload": "' OR '1'='1 --",
+    "vulnerability_type": "potential_error",
+    "confidence": "low",
+    "evidence": "HTTP 404",
+    "response_status": 404,
+    "scope_verified": true
+  },
+  {
+    "url": "https://www.fareharbor.com/search",
+    "method": "GET",
+    "parameter": "query",
+    "payload": "' OR '1'='1 --",
+    "vulnerability_type": "potential_error",
+    "confidence": "low",
+    "evidence": "HTTP 405",
+    "response_status": 405,
+    "scope_verified": true
+  },
+  {
+    "url": "https://www.fareharbor.com/search",
+    "method": "GET",
+    "parameter": "date",
+    "payload": "' OR '1'='1 --",
+    "vulnerability_type": "potential_error",
+    "confidence": "low",
+    "evidence": "HTTP 405",
+    "response_status": 405,
+    "scope_verified": true
+  }
+]
